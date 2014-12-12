@@ -1,4 +1,12 @@
-docs
-====
+$Cloudlynx Public IaaS
+========
 
-Public documentation for customers of Cloudlynx
+$project is a highly compliant Swiss cloud provider – offers IaaS solutions especially to regulated industries such as pharma, banking, and government.
+This repo contains the documentation for our services.
+
+Support
+-------
+
+If you are having issues or would like more information, please let us know via our support line:
+support@cloudlynx.ch
++41 61 500 12 14
