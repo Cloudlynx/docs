@@ -24,12 +24,14 @@ Instead of resizing an existing instance, create a new instance of desired flavo
 
 - - -
 
-**Multiple or repeated IP addresses may be shown in the Dashboard for running instances.**
-*Description*
+####Multiple or repeated IP addresses may be shown in the Dashboard for running instances.
+**Description**
+
 The Dashboard will sometimes show multiple IP addresses for a single instance where only one should be shown. Usually this occurs when large numbers of identical instances are requested by the same customer simultaneously.
 Only one of the shown IP addresses will be active for the instance, often this is the last one listed.
 When this happens some of the requested instances may also fail to start. 
-*Workaround*
+**Workaround**
+
 Disregard the additional, incorrect IP addresses
 Request identical instances in smaller batches (e.g. 10 or 20 at a time) 
 
