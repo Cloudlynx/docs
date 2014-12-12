@@ -24,7 +24,7 @@ When you make a snapshot you have no guarantee that this will be consistent. You
 1. Log in, and become root (sudo su - )
 2. Run the following command :
 
-	“fsfreeze -f / && sleep 60 && fsfreeze -u / “
+	fsfreeze -f / && sleep 60 && fsfreeze -u /
 
 This freezes the filesystem, waits 60 seconds, then unfreezes it. During these 60 seconds you just make the snapshot. If you don't do this the snapshot might be inconsistent.
 
