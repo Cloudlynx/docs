@@ -17,10 +17,15 @@ A: One option is to delete the instance and start again. If this is not feasible
 Q: How do I make a proper snapshot from a running RHEL instance? 
 
 A: We recommend to use RHEL images only with profiles(flavours) which have at least 1GB RAM.
-When you make a snapshot you have no guarantee that this will be consistent. You must make sure that the filesystem is in a clean state, and that there is nothing going on. The best way to do this is to “freeze” it. Now freezing the filesystem will freeze the prompt too. However you can do the following steps.
+
+When you make a snapshot you have no guarantee that this will be consistent. You must make sure that the filesystem is in a clean state, and that there is nothing going on. The best way to do this is to 
+“freeze” it. Now freezing the filesystem will freeze the prompt too. However you can do the following steps.
+
 1. Log in, and become root (sudo su - )
 2. Run the following command :
+
 	“fsfreeze -f / && sleep 60 && fsfreeze -u / “
+
 This freezes the filesystem, waits 60 seconds, then unfreezes it. During these 60 seconds you just make the snapshot. If you don't do this the snapshot might be inconsistent.
 
 ### Change a Keypair
