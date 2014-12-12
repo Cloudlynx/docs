@@ -14,6 +14,8 @@ The minimum size for images provided by Cloudlynx is:
 - Ubuntu-12.04-64Bit-2014.07.04: 10GB
 For snapshots of instances, the minimum size is the ephemeral disk size of the instance from which the snapshot was created.
 
+- - -
+
 ### The resize function for instances doesn't work.  
 #### Description
 The resize function is intended to allow the flavour of a running instance to be changed with minimum disruption to the running of the instance. At present this function doesn't work in the Cloudlynx IaaS.
