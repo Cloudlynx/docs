@@ -16,8 +16,21 @@ For snapshots of instances, the minimum size is the ephemeral disk size of the i
 
 - - -
 
-### The resize function for instances doesn't work.  
-#### Description
+#### The resize function for instances doesn't work.  
+##### Description
 The resize function is intended to allow the flavour of a running instance to be changed with minimum disruption to the running of the instance. At present this function doesn't work in the Cloudlynx IaaS.
-#### Workaround
+##### Workaround
 Instead of resizing an existing instance, create a new instance of desired flavour and configure it to replace the existing instance. Once the new instance is running, terminate the original instance. 
+
+- - -
+
+**Multiple or repeated IP addresses may be shown in the Dashboard for running instances.**
+*Description*
+The Dashboard will sometimes show multiple IP addresses for a single instance where only one should be shown. Usually this occurs when large numbers of identical instances are requested by the same customer simultaneously.
+Only one of the shown IP addresses will be active for the instance, often this is the last one listed.
+When this happens some of the requested instances may also fail to start. 
+*Workaround*
+Disregard the additional, incorrect IP addresses
+Request identical instances in smaller batches (e.g. 10 or 20 at a time) 
+
+- - -
