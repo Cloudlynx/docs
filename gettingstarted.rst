@@ -801,7 +801,7 @@ The Instance Boot Sources are:
    :alt: Instances - Status
 
 Launch an Instance from Image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 
 **Images & Snapshots** contains the list of all available images and snapshots for the project. This includes pre-built images provided by Cloudlynx, public images shared by users of the Cloudlynx cloud and images created and uploaded to the current project (non-public).
 
@@ -823,7 +823,7 @@ To launch an instance directly from a pre-built image:
    :alt: Launch Instance – Details – Boot from image
    
 Launch an Instance from a Snapshot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 
 Launching an instance from a snapshot requires an already existing snapshot. For information on how to create a snapshot see chapter :ref:`snapshot-instance`.
 
@@ -845,7 +845,7 @@ Launching an instance from a snapshot requires an already existing snapshot. For
    :alt: Launch Instance – Details – Boot from Snapshot
    
 Launch an Instance from a Volume
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 Launching an instance from a volume requires an already existing volume with an image on it. For information on how to create a volume with an image refer to chapter 14 Create a Volume.
 
@@ -863,10 +863,134 @@ Launching an instance from a volume requires an already existing volume with an 
    :alt: Launch Instance – Details – Volume
    
 Launch an Instance Using CLI
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To launch an instance using the CLI, the OpenStack client needs to be installed and configured on the local Linux client (see chapter :ref:`cli`).
 
 **Note:** All commands shown are for Linux based operating systems. This chapter will not cover Windows based operating systems
 
-   
+Gather Parameters to Launch an Instance
+"""""""""""""""""""""""""""""""""""""""
+
+To be able to create the launch command, several variables should be collected before using the commands below. Most commands show just a list of possible variables from where the one needed can be chosen from.
+
+Minimum required variables to launch an instance:
+
+1. An instance source (image, snapshot or volume that contains an image or snapshot).:
+
+  $ nova image-list
+
+2. The flavour size for the instance.:
+
+  $ nova flavor-list
+
+3. Access and security credentials:
+  * A keypair for your instance. For the keypair to be successfully injected, the image must contain the cloud-init package.:
+  
+  $ nova keypair-list
+
+
+  * A security group that defines which incoming network traffic is forwarded to instances. Security groups hold a set of firewall policies, known as security group rules.:
+  
+  $ nova secgroup-list
+
+4. The network which the instance will be connected to.:
+
+  $ nova network-list
+
+Additionally the following information is needed:
+
+1. A name for the instance
+2. Account information to connect to the Cloudlynx environment
+  * OS-username (Cloudlynx login name)
+  * OS-password (Cloudlynx login password)
+  * OS-tenant-name (project name as displayed in the Cloudlynx dashboard side bar)
+  * OS-auth-url (The Identitiy (Keystone) API url can be found following the steps in chapter :ref:`cli`).)
+
+**Note:** In this chapter the wording ‘OS’ in variables or parameters refers to ‘OpenStack’ (Cloudlynx) and not ‘Operating System’.
+
+**Note:** Using the command line interface, an instance can be launched from an **image** or a **volume**, but not from a **snapshot**. 
+
+Launch Instance via CLI Command
+"""""""""""""""""""""""""""""""
+
+1. To get an idea which options are possible, execute the nova boot command without any parameters:
+
+  nova boot   [--flavor <flavor>] [--image <image>]
+              [--image-with <key=value>] [--boot-volume <volume_id>]
+              [--snapshot <snapshot_id>] [--num-instances <number>]
+              [--meta <key=value>] [--file <dst-path=src-path>]
+              [--key-name <key-name>] [--user-data <user-data>]
+              [--availability-zone <availability-zone>]
+              [--security-groups <security-groups>]
+              [--block-device-mapping <dev-name=mapping>]
+              [--block-device key1=value1[,key2=value2...]]
+              [--swap <swap_size>]
+              [--ephemeral size=<size>[,format=<format>]]
+              [--hint <key=value>]
+              [--nic <net-id=net-uuid,v4-fixed-ip=ip-addr,port-id=port-uuid>]
+              [--config-drive <value>] [--poll]
+              <name>
+
+2. Compile all the parameters necessary and execute the nova boot command. See example command below:
+
+  $ nova --os-username=user1 --os-tenant-name=”my tenant” --os-auth-url=https://api.preview.cloudlynx.ch/api/keystone/v2.0/ boot --flavor m1.tiny --image 55b1a2b7-75a2-49dc-a0e9-99fb17ac1b54 --key_name ssh_key1 --meta description=”my test instance” --nic net-id=82f3c9b1-945e-4674-8f84-21d713ad85c4 NameOfTheInstance
+
+3. Nova prompts for your OS-password (Cloudlynx user log in). Provide the password.:
+
+  OS Password: 
+
+4. If the password is correct, the nova boot command will execute and launch the instance and the following overview of the started instance is shown in the terminal.:
+
+  +--------------------------------------+--------------------------------------+
+  | Property                             | Value                                |
+  +--------------------------------------+--------------------------------------+
+  | OS-EXT-STS:task_state                | scheduling                           |
+  | image                                | Cirros Test                          |
+  | OS-EXT-STS:vm_state                  | building                             |
+  | OS-EXT-SRV-ATTR:instance_name        | instance-000045c5                    |
+  | OS-SRV-USG:launched_at               | None                                 |
+  | flavor                               | m1.tiny                              |
+  | id                                   | 52b3ade2-285a-454d-a87e-f93af8bd59e8 |
+  | security_groups                      | [{u'name': u'default'}]              |
+  | user_id                              | 49996ac695564577b18ecfac865f4488     |
+  | OS-DCF:diskConfig                    | MANUAL                               |
+  | accessIPv4                           |                                      |
+  | accessIPv6                           |                                      |
+  | progress                             | 0                                    |
+  | OS-EXT-STS:power_state               | 0                                    |
+  | OS-EXT-AZ:availability_zone          | nova                                 |
+  | config_drive                         |                                      |
+  | status                               | BUILD                                |
+  | updated                              | 2014-09-04T11:57:55Z                 |
+  | hostId                               |                                      |
+  | OS-EXT-SRV-ATTR:host                 | None                                 |
+  | OS-SRV-USG:terminated_at             | None                                 |
+  | key_name                             | ssh_key1                             |
+  | OS-EXT-SRV-ATTR:hypervisor_hostname  | None                                 |
+  | name                                 | instance1                            |
+  | adminPass                            | XXXXXXX                              |
+  | tenant_id                            | 3e4608c9747348c79b887b19242ccf23     |
+  | created                              | 2014-09-04T11:57:54Z                 |
+  | os-extended-volumes:volumes_attached | []                                   |
+  | metadata                             | {u'description': u'test instance'}   |
+  +--------------------------------------+--------------------------------------+
+
+5. To see the current status of the started instance, use the command below:
+
+  $ nova -show 'name of your instance'
+  
+Launch an Instance using API 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Launching instances from images and assigning metadata to instances is done through the compute API.
+
+For more information on how to launch an instance using the compute API, see chapter 0. 
+
+Launch an Instance Using Orchestration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Orchestration allows the management of infrastructure resources for cloud applications including (among others) instance creation and autoscaling in the form of a scaling group in the Heat template (main project in the OpenStack orchestration programme).
+
+For more detailed information on how to launch an instance using orchestration, see :ref:`orchestration`. 
+
