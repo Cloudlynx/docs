@@ -117,6 +117,8 @@ A password change should not be done via the **Settings** link in the title bar.
 .. image:: _static/gettingstarted/fig5.png
    :alt: Change Password
 
+.. _key-management:
+
 Key Management
 --------------
 
@@ -125,6 +127,7 @@ SSH keypairs are used to access instances securely without specifying a password
 **Note:** To access a Linux-based instance for the first time, it must be accessed using an SSH keypair. This applies to the Linux images provided by Cloudlynx only.
 
 .. _create-keypair:
+
 Create a New Keypair
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -302,10 +305,12 @@ Delete a Network
 **Warning:** Make sure that there are no instances attached to the network you want to delete.
 
 .. _subnets:
+
 Subnets
 -------
 
 .. _create-subnet:
+
 Create a Subnet
 ^^^^^^^^^^^^^^^
 
@@ -512,5 +517,283 @@ Security Groups
 A **Security Group** is a named collection of firewall rules which are used to limit the types of traffic that can be send from or received by a particular instance or group of instances. An instance can have one or more security groups assigned. 
 
 The default security group and a newly created security group have some predefined firewall rules:
+
 * Default security group – allows all outgoing traffic to anywhere on IPv4 and IPv6. Allows incoming traffic from other default security group instances
 * Unmodified new security group – allows all outgoing traffic to anywhere on IPv4 and IPv6
+
+Create a Security Group
+"""""""""""""""""""""""
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
+
+.. image:: _static/gettingstarted/fig26.png
+   :alt: Access & Security - Security Groups
+
+2. Click on the **Create Security Group** button.
+3. The **Create Security Group** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig27.png
+   :alt: Create Security Group
+   
+4. Specify a name for the security group under **Name**.
+5. Add a description for the security group under **Description**.
+6. Click on the **Create Security Group** button.
+
+.. image:: _static/gettingstarted/fig28.png
+   :alt: Security Groups list
+
+7. The new security group appears in the list under **Security Groups**.
+
+Delete a Security Group
+"""""""""""""""""""""""
+
+To delete a security group, proceed as follows:
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
+2. In the **Security Group** tab, click the **Security Group** to be deleted. 
+3. Click on the **Delete Security Groups** button. 
+4. Confirm the security group deletion by clicking on the **Delete Security Groups** button.
+
+**Note:** The security group cannot be deleted as long as it is being used for one or more instances.
+
+**Note:** The deletion of a security group cannot be undone.
+
+.. image:: _static/gettingstarted/fig29.png
+   :alt: Confirm Delete Security Group
+   
+Security Group Rules
+^^^^^^^^^^^^^^^^^^^^
+
+Modify the rules in a security group to allow access to instances through different ports and protocols. 
+
+The following parameters for rules must be specified:
+
+* **Destination Port On Instances** – Define a port range. To open a single port, enter the same value twice. The Internet Control Message Protocol (ICMP) does not support ports; enter values to define the codes and types of ICMP traffic to be allowed instead. 
+* **Source of Traffic** – The source can be defined either as an IP address, an IP address range, or as another security group in the cloud.
+
+**Note:** Rules are automatically enforced for that security group as soon as you create or modify them. This takes effect on the instances that have the security group assigned to it.
+
+.. image:: _static/gettingstarted/fig30.png
+   :alt: Edit Security Group Rules
+
+Add a Rule to the Default Security Group
+""""""""""""""""""""""""""""""""""""""""
+
+For example, to enable only SSH and ICMP (Internet Control Message Protocol), ping access to instances and block all other traffic.
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
+2. In the **Security Group** tab, click the **Edit Rules** button on the default security group.
+
+.. image:: _static/gettingstarted/fig31.png
+   :alt: Security Groups
+
+3. Click on the **Add Rule** button. 
+4. The **Add Rule** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig32.png
+   :alt: Add Rule
+   
+  * **Rule** – Select the desired rule template or use custom rules from the **Rule** dropdown list. 
+  * **Direction** – Select the direction from the dropdown list. 
+  * **Open Port** – Define the port or ports to which the rule will apply using the **Open Port** field. 
+  
+    * **Port** – Define a specific port in the **Port** field.
+    * **Port Range** – Define the port range using the **From Port – To Port** fields.
+  
+  * **Remote** – Specify the source of the traffic to be allowed via this rule.
+  
+    * **CIDR** – Define the source of the traffic in the form of an IP address block.
+    * **Security Group** – Selecting a security group as the source will allow any other instance in that security group access to any other instance with the source of traffic defined via security group.
+
+5. Click on the **Add** button to add the new rule to the security group.
+6. The rule is successfully added to a security group. 
+
+.. image:: _static/gettingstarted/fig33.png
+   :alt: Security Group Rules – successfully added new rule
+   
+**Note:** Once a rule is created, it cannot be edited later. If a rules needs to be changed, it needs to be deleted and created as a new rule with new parameters.
+
+Delete a Rule
+"""""""""""""
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
+2. In the **Security Group** tab, click the **Edit Rules** button.
+3. Mark the checkboxes of the rules to be deleted.
+4. Click on the **Delete Rules** button.
+5. Confirm the rule deletion by clicking on the **Delete Rules** button. 
+
+**Note:** This action cannot be undone. 
+
+Floating IPs
+^^^^^^^^^^^^
+
+Each launched instance has a private IP address and can also have a public (floating) IP address. The private IP address is used for communication between instances, and the public address is used for communication with networks outside the cloud, including the Internet.
+
+Request a New Floating IP
+"""""""""""""""""""""""""
+
+To add a new floating IP to your project, proceed as follows:
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
+2. Click on the **Floating IPs** tab.
+
+.. image:: _static/gettingstarted/fig34.png
+   :alt: Access & Security – Floating IPs
+   
+3. Click on the **Allocate IP to Project** button.
+4. An **Allocate Floating IP** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig35.png
+   :alt: Allocate Floating IP
+   
+5. Click on the **Allocate IP** button to add a new floating IP to the floating IP pool.
+
+.. image:: _static/gettingstarted/fig36.png
+   :alt: Successfully added Floating IP
+   
+6. A new floating IP is available in the **Floating IPs** list under **Manage Compute > Access & Security**.
+
+Associate a Floating IP to an Instance
+""""""""""""""""""""""""""""""""""""""
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section. 
+2. Click on the **Floating IPs** tab. 
+3. In the **Floating IPs** list click on the **Associate** button. The **Manage Floating IP Associations pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig37.png
+   :alt: Manage Floating IP Associations – select a floating IP
+   
+4. The floating IP chosen is automatically filled into the **IP Address** field. 
+
+  * A new IP address can be added by clicking the + button. This option will add a new Floating IP to your floating IP pool.
+  * Another IP address can be selected also by opening the dropdown menu and selecting an alternative IP address from the pool of available IP addresses to your project.
+
+5. Click on a port in the **Port to be associated** dropdown menu to associate it with the floating IP. The list shows all the instances with their fixed IP addresses. 
+
+.. image:: _static/gettingstarted/fig38.png
+   :alt: Manage Floating IP Association – select a port (instance)
+   
+6. Click on the **Associate** button. 
+7. The IP address will be associated to the instance.
+
+.. image:: _static/gettingstarted/fig39.png
+   :alt: Access & Security – successfully associated floating IP to an instance
+   
+Disassociate a Floating IP Address from an Instance
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section. 
+2. Click on the **Floating IPs** tab.
+3. Click on the **Disassociate** button of the floating IP address to be disassociated from an instance.
+4. The **Confirm Disassociate** pop-up window is displayed.
+5. Click on the **Disassociate** button to finalise the action.
+
+.. image:: _static/gettingstarted/fig40.png
+   :alt: Confirm Disassociate
+   
+6. The floating IP address is successfully disassociated from the instance.
+
+.. image:: _static/gettingstarted/fig41.png
+   :alt: IP address successfully disassociated
+   
+Release a Floating IP
+"""""""""""""""""""""
+
+To release a floating IP address, proceed as follows:
+
+1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section. 
+2. Click on the **Floating IPs** tab. 
+3. In the **Floating IPs** list, mark the checkboxes of the IP addresses to be released.
+4. Click on the **Release Floating IPs** button.
+5. The **Confirm Release Floating IPs** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig42.png
+   :alt: Confirm Release Floating IPs 
+   
+6. Click on the **Release Floating IPs** button to finalise the release.
+
+.. image:: _static/gettingstarted/fig43.png
+   :alt: Access & Security – successfully released floating IP
+   
+Launch an Instance
+------------------
+
+Cloudlynx provides multiple methods to launch an instance, ranging from the GUI based dashboard, Command Line Interface and API commands to orchestration templates.
+
+**Note:** To launch an instance the following prerequisites must be fulfilled:
+
+* The person launching the instance must have the correct login details for the account.
+* The network is correctly defined and includes at least one subnet.
+
+Instances can be launched from the following screens:
+* **Manage Compute > Instances**
+* **Manage Compute > Images & Snapshots**
+* **Manage Network > Network Topology**
+
+This document will cover the following options in detail:
+* Boot from an image
+* Boot from a snapshot
+* Boot from a volume
+
+Launch an Instance from the Dashboard
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To launch an instance via the Cloudlynx dashboard:
+
+1. Select the **Instances** sub-menu item under the **Manage Compute** section on the side bar.
+
+.. image:: _static/gettingstarted/fig44.png
+   :alt: Manage Compute – Instances
+   
+2. Click on the **Launch Instance** button on the top right. The **Launch Instance** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig45.png
+   :alt: Launch Instance – Details
+   
+3. Select an availability zone for the instance from the dropdown list. This defines where the instance will be physically located.
+4. Fill out the **Instance Name** field to give the instance a unique name for easy identification.
+5. Select a flavour for the instance. Flavours are predefined and determine the compute resources available. For the selected flavour, the resources are displayed in the **Flavor Details** section on the right.
+6. To launch multiple instances, enter a value greater than one in the **Instance Count** field.
+7. Select the **Instance Boot Source** from the dropdown list and fill out the additional fields depending on the boot source chosen.
+
+.. image:: _static/gettingstarted/fig46.png
+   :alt: Launch Instance – Instance Boot Source
+   
+The Instance Boot Sources are:
+* **Boot from image** – A new field for **Image Name** displays. Select an image from the list.
+* **Boot from snapshot** – A new field for **Instance Snapshot** displays. Select a snapshot from the list.
+* **Boot from volume** – A new field for **Volume** displays. Select a volume from the list.
+* **Boot from image (creates a new volume)** – Boot from an image and create a volume by entering the device size and device name for your volume. Select the **Delete on Terminate** option to delete the volume on terminating the instance.
+* **Boot from volume snapshot (creates a new volume)** - boot from a **volume snapshot** and create a new volume by choosing **Volume Snapshot** from the list and adding a **Device Name** for your volume. Click the **Delete on Terminate** option to delete the volume on terminating the instance.
+
+**Note:** Please see the relevant chapters for more information on how to create and upload those boot sources (e.g. chapter Volume for creating a volume and a snapshot of a volume).
+
+8. Click on the **Access & Security** tab.
+9. Select an existing keypair from the dropdown list or click on the + button to upload a new keypair (See chapter :ref:`key-management` for more information).
+10. Specify **Admin Pass** if launching a Windows-based instance.
+
+**Note:** **Admin Pass** is currently an untested feature. The Cloud-init package is required to use this feature.
+
+11. Select the security groups to be used for the instance. The **default** box under **Security Group** is checked by default (See chapter 8 Configure and Manage Security for more information). Multiple security groups can be chosen.
+
+.. image:: _static/gettingstarted/fig47.png
+   :alt: Launch Instance – Access & Security
+   
+12. Click on the **Networking** tab.
+13. Select a network from the **Available networks** list. Either by clicking on the blue **+** button for the relevant network or by dragging and dropping the network from the **Available networks** to the **Selected Networks** field.
+
+.. image:: _static/gettingstarted/fig48.png
+   :alt: Launch Instance – Networking
+   
+**Note:** Several networks can be added to the same instance.
+
+14. The **Post-Creation** tab allows to use scripts (for example Bash) that can be run after launching an instance or instances
+
+.. image:: _static/gettingstarted/fig49.png
+   :alt: Post-Creation 
+
+15. Click on the **Launch** button to launch the instance.
+16. To check the status of the instance, select the **Instances** sub-menu item under the **Manage Compute** section.
+17. Once the instance is up and running, the status will change to **Active**.
+
+.. image:: _static/gettingstarted/fig50.png
+   :alt: Instances - Status
