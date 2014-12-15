@@ -159,3 +159,56 @@ With a Key Generator on a Local Windows Client
 
 .. image:: _static/gettingstarted/fig7.png
    :alt: PuTTY Key Generator
+
+On a Local Linux Client
+"""""""""""""""""""""""
+
+To create a keypair on a Linux client, follow the steps below:
+1. Open a **Terminal**.
+2. Enter the **ssh-keygen** command to start the SSH key creation.
+
+Replace the variables in the examples below with your variables::
+
+    $ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
+    Generating public/private rsa keypair.
+
+**Note:** Recommended options to be used when creating the SSH key are (they are case sensitive):
+* -b (set the bitrate of the key) 4096 for RSA and 1024 for DSA
+* -t (set the type of the key) RSA or DSA
+* -C (add a comment to the key) information to identify the key
+
+3. Enter the **keyname**.::
+
+    Enter file in which to save the key (/filepath/.ssh/id_rsa): keyname
+
+4. Enter the **passphrase** for the key (this is optional but is more secure).::
+	
+    Enter a passphrase (empty for no passphrase): passphrase
+    Enter the same passphrase again: passphrase
+
+5. The SSH key is being generated and will placed both private and public key into your .ssh file.::
+
+    Your identification has been saved in Cloud_Instance.
+    Your public key has been saved in Cloud_Instance.pub.
+    The key fingerprint is:
+    40:fc:bd:cd:4f:c0:bf:e5:e6:89:47:c8:9a:54:2c:9e Keypair_for_Cloud_Company_Instances
+    The key's randomart image is:
+    +--[ RSA 4096]----+
+    |     ..          |
+    |     ..          |
+    |      .. . ..    |
+    |       .. ..oo   |
+    |        S .+=o.  |
+    |          .Eooo..|
+    |          . oo.+ |
+    |            o +.+|
+    |             ..+.|
+    +-----------------+
+    $
+
+6. Add the SSH key to the ssh-agent using the ssh-add command.::
+
+    $ ssh-add /filepath/privatekeyname
+
+
+   
