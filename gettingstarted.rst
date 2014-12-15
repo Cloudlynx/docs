@@ -164,15 +164,15 @@ On a Local Linux Client
 """""""""""""""""""""""
 
 To create a keypair on a Linux client, follow the steps below:
-1. Open a **Terminal**.
-2. Enter the **ssh-keygen** command to start the SSH key creation.
 
-Replace the variables in the examples below with your variables::
+1. Open a **Terminal**.
+2. Enter the **ssh-keygen** command to start the SSH key creation. Replace the variables in the examples below with your variables::
 
     $ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
     Generating public/private rsa keypair.
 
 **Note:** Recommended options to be used when creating the SSH key are (they are case sensitive):
+
 * -b (set the bitrate of the key) 4096 for RSA and 1024 for DSA
 * -t (set the type of the key) RSA or DSA
 * -C (add a comment to the key) information to identify the key
@@ -210,5 +210,43 @@ Replace the variables in the examples below with your variables::
 
     $ ssh-add /filepath/privatekeyname
 
+Import an Existing Keypair
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   
+A keypair can be generated with an external tool that creates OpenSSH formatted keys (see section 3.1 Create a New Keypair). Any type of an OpenSSH key is accepted.
+
+1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
+2. Click on the **Keypairs** tab. 
+3. Click on the **Import Keypair** button.
+4. In the **Keypair Name** field, specify a name for identification purposes. 
+5. Copy and paste the content of the public key into the **Public Key** field.
+6. Click on the **Import Keypair** button to finish.
+
+**Note:** The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one.
+
+**Note:** An error message may occur if the format of the key is not OpenSSH.
+
+Translate non-OpenSSH key to OpenSSH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Download and open **PuTTYgen**. 
+2. Click on the **Load** button.
+3. Choose the private key file. In Windows environment, change the filter to **All Files (*.*)** if the file is not displayed.
+4. Once the key is open, the text in the field **Public key for pasting into OpenSSH authorized keys file** can now be copied and used for the import dialogue on the dashboard.
+
+Delete a Keypair
+^^^^^^^^^^^^^^^^
+
+**Warning:** Instances may not be accessible anymore if the public key is deleted.
+
+1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
+2. Click on the **Keypairs** tab. All available keypairs for that project are listed.
+3. Click on the checkbox on the left of the keypair to be deleted.
+4. Click on the **Delete Keypair** button.
+
+**Note:** This action cannot be undone.
+
+**Note:** This will delete the public key on the system. The private key is not affected.
+
+
+
