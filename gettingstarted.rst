@@ -198,15 +198,15 @@ To create a keypair on a Linux client, follow the steps below:
     40:fc:bd:cd:4f:c0:bf:e5:e6:89:47:c8:9a:54:2c:9e Keypair_for_Cloud_Company_Instances
     The key's randomart image is:
     +--[ RSA 4096]----+
-      |     ..            |
-      |     ..            |
-      |      .. . ..      |
-      |       .. ..oo     |
-      |        S .+=o.    |
-      |          .Eooo..|
-      |          . oo.+ |
-      |            o +.+|
-      |             ..+.|
+    |     ..          |
+    |     ..          |
+    |      .. . ..    |
+    |       .. ..oo   |
+    |        S .+=o.  |
+    |          .Eooo..|
+    |          . oo.+ |
+    |            o +.+|
+    |             ..+.|
     +-----------------+
     $
 
@@ -595,17 +595,17 @@ For example, to enable only SSH and ICMP (Internet Control Message Protocol), pi
    :alt: Add Rule
 
 
-  * **Rule** – Select the desired rule template or use custom rules from the **Rule** dropdown list. 
-  * **Direction** – Select the direction from the dropdown list. 
-  * **Open Port** – Define the port or ports to which the rule will apply using the **Open Port** field. 
+* **Rule** – Select the desired rule template or use custom rules from the **Rule** dropdown list. 
+* **Direction** – Select the direction from the dropdown list. 
+* **Open Port** – Define the port or ports to which the rule will apply using the **Open Port** field. 
   
-    * **Port** – Define a specific port in the **Port** field.
-    * **Port Range** – Define the port range using the **From Port – To Port** fields.
+  * **Port** – Define a specific port in the **Port** field.
+  * **Port Range** – Define the port range using the **From Port – To Port** fields.
   
-  * **Remote** – Specify the source of the traffic to be allowed via this rule.
-  
-    * **CIDR** – Define the source of the traffic in the form of an IP address block.
-    * **Security Group** – Selecting a security group as the source will allow any other instance in that security group access to any other instance with the source of traffic defined via security group.
+* **Remote** – Specify the source of the traffic to be allowed via this rule.
+
+  * **CIDR** – Define the source of the traffic in the form of an IP address block.
+  * **Security Group** – Selecting a security group as the source will allow any other instance in that security group access to any other instance with the source of traffic defined via security group.
 
 5. Click on the **Add** button to add the new rule to the security group.
 6. The rule is successfully added to a security group. 
@@ -728,11 +728,13 @@ Cloudlynx provides multiple methods to launch an instance, ranging from the GUI 
 * The network is correctly defined and includes at least one subnet.
 
 Instances can be launched from the following screens:
+
 * **Manage Compute > Instances**
 * **Manage Compute > Images & Snapshots**
 * **Manage Network > Network Topology**
 
 This document will cover the following options in detail:
+
 * Boot from an image
 * Boot from a snapshot
 * Boot from a volume
@@ -764,6 +766,7 @@ To launch an instance via the Cloudlynx dashboard:
    :alt: Launch Instance – Instance Boot Source
    
 The Instance Boot Sources are:
+
 * **Boot from image** – A new field for **Image Name** displays. Select an image from the list.
 * **Boot from snapshot** – A new field for **Instance Snapshot** displays. Select a snapshot from the list.
 * **Boot from volume** – A new field for **Volume** displays. Select a volume from the list.
@@ -883,7 +886,7 @@ Minimum required variables to launch an instance:
 
     $ nova image-list
 
-2. The flavour size for the instance.:
+2. The flavour size for the instance.::
 
     $ nova flavor-list
 
@@ -905,6 +908,7 @@ Additionally the following information is needed
 
 1. A name for the instance
 2. Account information to connect to the Cloudlynx environment
+
   * OS-username (Cloudlynx login name)
   * OS-password (Cloudlynx login password)
   * OS-tenant-name (project name as displayed in the Cloudlynx dashboard side bar)
@@ -917,7 +921,7 @@ Additionally the following information is needed
 Launch Instance via CLI Command
 """""""""""""""""""""""""""""""
 
-1. To get an idea which options are possible, execute the nova boot command without any parameters:
+1. To get an idea which options are possible, execute the nova boot command without any parameters::
 
     nova boot   [--flavor <flavor>] [--image <image>]
                 [--image-with <key=value>] [--boot-volume <volume_id>]
@@ -935,51 +939,51 @@ Launch Instance via CLI Command
                 [--config-drive <value>] [--poll]
                 <name>
 
-2. Compile all the parameters necessary and execute the nova boot command. See example command below:
+2. Compile all the parameters necessary and execute the nova boot command. See example command below::
 
   $ nova --os-username=user1 --os-tenant-name=”my tenant” --os-auth-url=https://api.preview.cloudlynx.ch/api/keystone/v2.0/ boot --flavor m1.tiny --image 55b1a2b7-75a2-49dc-a0e9-99fb17ac1b54 --key_name ssh_key1 --meta description=”my test instance” --nic net-id=82f3c9b1-945e-4674-8f84-21d713ad85c4 NameOfTheInstance
 
-3. Nova prompts for your OS-password (Cloudlynx user log in). Provide the password.:
+3. Nova prompts for your OS-password (Cloudlynx user log in). Provide the password.::
 
   OS Password: 
 
-4. If the password is correct, the nova boot command will execute and launch the instance and the following overview of the started instance is shown in the terminal.:
+4. If the password is correct, the nova boot command will execute and launch the instance and the following overview of the started instance is shown in the terminal.::
 
     +--------------------------------------+--------------------------------------+
-      | Property                               | Value                                  |
+      | Property                               | Value                            |
     +--------------------------------------+--------------------------------------+
-    | OS-EXT-STS:task_state                  | scheduling                             |
-    | image                                  | Cirros Test                            |
-    | OS-EXT-STS:vm_state                    | building                               |
-    | OS-EXT-SRV-ATTR:instance_name          | instance-000045c5                      |
-    | OS-SRV-USG:launched_at                 | None                                   |
-    | flavor                                 | m1.tiny                                |
-    | id                                     | 52b3ade2-285a-454d-a87e-f93af8bd59e8 |  
-	| security_groups                        | [{u'name': u'default'}]                |
-    | user_id                                | 49996ac695564577b18ecfac865f4488       |
-    | OS-DCF:diskConfig                      | MANUAL                                 |
-    | accessIPv4                             |                                        |
-    | accessIPv6                             |                                        |
-    | progress                               | 0                                      |
-    | OS-EXT-STS:power_state                 | 0                                      |
-    | OS-EXT-AZ:availability_zone            | nova                                   |
-    | config_drive                           |                                        |
-    | status                                 | BUILD                                  |
-    | updated                                | 2014-09-04T11:57:55Z                   |
-    | hostId                                 |                                        |
-    | OS-EXT-SRV-ATTR:host                   | None                                   |
-    | OS-SRV-USG:terminated_at               | None                                   |
-    | key_name                               | ssh_key1                               |
-    | OS-EXT-SRV-ATTR:hypervisor_hostname    | None                                   |
-    | name                                   | instance1                              |
-    | adminPass                              | XXXXXXX                                |
-    | tenant_id                              | 3e4608c9747348c79b887b19242ccf23       |
-    | created                                | 2014-09-04T11:57:54Z                   |
-    | os-extended-volumes:volumes_attached | []                                     |
-    | metadata                               | {u'description': u'test instance'}     |
+    | OS-EXT-STS:task_state                | scheduling                           |
+    | image                                | Cirros Test                          |
+    | OS-EXT-STS:vm_state                  | building                             |
+    | OS-EXT-SRV-ATTR:instance_name        | instance-000045c5                    |
+    | OS-SRV-USG:launched_at               | None                                 |
+    | flavor                               | m1.tiny                              |
+    | id                                   | 52b3ade2-285a-454d-a87e-f93af8bd59e8 |  
+	| security_groups                      | [{u'name': u'default'}]              |
+    | user_id                              | 49996ac695564577b18ecfac865f4488     |
+    | OS-DCF:diskConfig                    | MANUAL                               |
+    | accessIPv4                           |                                      |
+    | accessIPv6                           |                                      |
+    | progress                             | 0                                    |
+    | OS-EXT-STS:power_state               | 0                                    |
+    | OS-EXT-AZ:availability_zone          | nova                                 |
+    | config_drive                         |                                      |
+    | status                               | BUILD                                |
+    | updated                              | 2014-09-04T11:57:55Z                 |
+    | hostId                               |                                      |
+    | OS-EXT-SRV-ATTR:host                 | None                                 |
+    | OS-SRV-USG:terminated_at             | None                                 |
+    | key_name                             | ssh_key1                             |
+    | OS-EXT-SRV-ATTR:hypervisor_hostname  | None                                 |
+    | name                                 | instance1                            |
+    | adminPass                            | XXXXXXX                              |
+    | tenant_id                            | 3e4608c9747348c79b887b19242ccf23     |
+    | created                              | 2014-09-04T11:57:54Z                 |
+    | os-extended-volumes:volumes_attached | []                                   |
+    | metadata                             | {u'description': u'test instance'}   |
     +--------------------------------------+--------------------------------------+
 
-5. To see the current status of the started instance, use the command below:
+5. To see the current status of the started instance, use the command below::
 
   $ nova -show 'name of your instance'
   
