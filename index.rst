@@ -1,18 +1,13 @@
-.. Cloudlynx documentation master file, created by
-   sphinx-quickstart on Fri Dec 12 02:58:56 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to Cloudlynx's documentation!
-=====================================
+Cloudlynx Documentation
+=======================
+Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offering IaaS solutions especially to regulated industries such as pharma, banking, and government.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-
-
-
+   knownissues
+   
 Indices and tables
 ==================
 
