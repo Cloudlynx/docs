@@ -172,7 +172,7 @@ To create a keypair on a Linux client, follow the steps below:
 1. Open a **Terminal**.
 2. Enter the **ssh-keygen** command to start the SSH key creation. Replace the variables in the examples below with your variables::
 
-    $ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
+	$ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
     Generating public/private rsa keypair.
 
 **Note:** Recommended options to be used when creating the SSH key are (they are case sensitive):
@@ -198,15 +198,15 @@ To create a keypair on a Linux client, follow the steps below:
     40:fc:bd:cd:4f:c0:bf:e5:e6:89:47:c8:9a:54:2c:9e Keypair_for_Cloud_Company_Instances
     The key's randomart image is:
     +--[ RSA 4096]----+
-    |     ..          |
-    |     ..          |
-    |      .. . ..    |
-    |       .. ..oo   |
-    |        S .+=o.  |
-    |          .Eooo..|
-    |          . oo.+ |
-    |            o +.+|
-    |             ..+.|
+      |     ..            |
+      |     ..            |
+      |      .. . ..      |
+      |       .. ..oo     |
+      |        S .+=o.    |
+      |          .Eooo..|
+      |          . oo.+ |
+      |            o +.+|
+      |             ..+.|
     +-----------------+
     $
 
@@ -407,15 +407,15 @@ Set a Gateway
 .. image:: _static/gettingstarted/fig18.png
    :alt: Set Gateway
 
-Connect a Private Network to a Router
+	
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select the **Routers** tab on the side bar under the **Manage Network** section. 
 2. Click on the name of the router.
 3. On the **Router Details** page, click on the **Add Interface** button.
 4. In the **Add Interface** dialogue box, select a subnet from the **Subnet** dropdown list.
-7. Enter the router interface **IP address** for the selected subnet. 
-8. Click on the **Add Interface** button to finish.
+5. Enter the router interface **IP address** for the selected subnet. 
+6. Click on the **Add Interface** button to finish.
 
 **Note:** If the IP address value is not set, either the default gateway IP address or the first host IP address in the subnet is used by default. 
 
@@ -484,10 +484,12 @@ Edit a Subnet
    :alt: Update Subnet tab
 
 5. Under the **Subnet Detail** tab the editable fields are:
+
   * **Enable DHCP** – Select this check box to enable DHCP.
   * **DNS Name Servers** – Update the name for the DNS server.
   * **Host Routes** – Update the IP address of host routes.
-6. Click on the **Update** button to save changes.
+
+  6. Click on the **Update** button to save changes.
 
 .. image:: _static/gettingstarted/fig24.png
    :alt: Update Subnet Detail tab
@@ -591,7 +593,8 @@ For example, to enable only SSH and ICMP (Internet Control Message Protocol), pi
 
 .. image:: _static/gettingstarted/fig32.png
    :alt: Add Rule
-   
+
+
   * **Rule** – Select the desired rule template or use custom rules from the **Rule** dropdown list. 
   * **Direction** – Select the direction from the dropdown list. 
   * **Open Port** – Define the port or ports to which the rule will apply using the **Open Port** field. 
@@ -657,7 +660,7 @@ Associate a Floating IP to an Instance
 
 1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section. 
 2. Click on the **Floating IPs** tab. 
-3. In the **Floating IPs** list click on the **Associate** button. The **Manage Floating IP Associations pop-up window is displayed.
+3. In the **Floating IPs** list click on the **Associate** button. The **Manage Floating IP Associations** pop-up window is displayed.
 
 .. image:: _static/gettingstarted/fig37.png
    :alt: Manage Floating IP Associations – select a floating IP
@@ -878,27 +881,27 @@ Minimum required variables to launch an instance:
 
 1. An instance source (image, snapshot or volume that contains an image or snapshot).:
 
-  $ nova image-list
+    $ nova image-list
 
 2. The flavour size for the instance.:
 
-  $ nova flavor-list
+    $ nova flavor-list
 
-3. Access and security credentials:
+3. Access and security credentials
   * A keypair for your instance. For the keypair to be successfully injected, the image must contain the cloud-init package.:
   
-  $ nova keypair-list
+    $ nova keypair-list
 
 
   * A security group that defines which incoming network traffic is forwarded to instances. Security groups hold a set of firewall policies, known as security group rules.:
   
-  $ nova secgroup-list
+    $ nova secgroup-list
 
 4. The network which the instance will be connected to.:
 
-  $ nova network-list
+    $ nova network-list
 
-Additionally the following information is needed:
+Additionally the following information is needed
 
 1. A name for the instance
 2. Account information to connect to the Cloudlynx environment
@@ -916,21 +919,21 @@ Launch Instance via CLI Command
 
 1. To get an idea which options are possible, execute the nova boot command without any parameters:
 
-  nova boot   [--flavor <flavor>] [--image <image>]
-              [--image-with <key=value>] [--boot-volume <volume_id>]
-              [--snapshot <snapshot_id>] [--num-instances <number>]
-              [--meta <key=value>] [--file <dst-path=src-path>]
-              [--key-name <key-name>] [--user-data <user-data>]
-              [--availability-zone <availability-zone>]
-              [--security-groups <security-groups>]
-              [--block-device-mapping <dev-name=mapping>]
-              [--block-device key1=value1[,key2=value2...]]
-              [--swap <swap_size>]
-              [--ephemeral size=<size>[,format=<format>]]
-              [--hint <key=value>]
-              [--nic <net-id=net-uuid,v4-fixed-ip=ip-addr,port-id=port-uuid>]
-              [--config-drive <value>] [--poll]
-              <name>
+    nova boot   [--flavor <flavor>] [--image <image>]
+                [--image-with <key=value>] [--boot-volume <volume_id>]
+                [--snapshot <snapshot_id>] [--num-instances <number>]
+                [--meta <key=value>] [--file <dst-path=src-path>]
+                [--key-name <key-name>] [--user-data <user-data>]
+                [--availability-zone <availability-zone>]
+                [--security-groups <security-groups>]
+                [--block-device-mapping <dev-name=mapping>]
+                [--block-device key1=value1[,key2=value2...]]
+                [--swap <swap_size>]
+                [--ephemeral size=<size>[,format=<format>]]
+                [--hint <key=value>]
+                [--nic <net-id=net-uuid,v4-fixed-ip=ip-addr,port-id=port-uuid>]
+                [--config-drive <value>] [--poll]
+                <name>
 
 2. Compile all the parameters necessary and execute the nova boot command. See example command below:
 
@@ -942,39 +945,39 @@ Launch Instance via CLI Command
 
 4. If the password is correct, the nova boot command will execute and launch the instance and the following overview of the started instance is shown in the terminal.:
 
-  +--------------------------------------+--------------------------------------+
-  | Property                             | Value                                |
-  +--------------------------------------+--------------------------------------+
-  | OS-EXT-STS:task_state                | scheduling                           |
-  | image                                | Cirros Test                          |
-  | OS-EXT-STS:vm_state                  | building                             |
-  | OS-EXT-SRV-ATTR:instance_name        | instance-000045c5                    |
-  | OS-SRV-USG:launched_at               | None                                 |
-  | flavor                               | m1.tiny                              |
-  | id                                   | 52b3ade2-285a-454d-a87e-f93af8bd59e8 |
-  | security_groups                      | [{u'name': u'default'}]              |
-  | user_id                              | 49996ac695564577b18ecfac865f4488     |
-  | OS-DCF:diskConfig                    | MANUAL                               |
-  | accessIPv4                           |                                      |
-  | accessIPv6                           |                                      |
-  | progress                             | 0                                    |
-  | OS-EXT-STS:power_state               | 0                                    |
-  | OS-EXT-AZ:availability_zone          | nova                                 |
-  | config_drive                         |                                      |
-  | status                               | BUILD                                |
-  | updated                              | 2014-09-04T11:57:55Z                 |
-  | hostId                               |                                      |
-  | OS-EXT-SRV-ATTR:host                 | None                                 |
-  | OS-SRV-USG:terminated_at             | None                                 |
-  | key_name                             | ssh_key1                             |
-  | OS-EXT-SRV-ATTR:hypervisor_hostname  | None                                 |
-  | name                                 | instance1                            |
-  | adminPass                            | XXXXXXX                              |
-  | tenant_id                            | 3e4608c9747348c79b887b19242ccf23     |
-  | created                              | 2014-09-04T11:57:54Z                 |
-  | os-extended-volumes:volumes_attached | []                                   |
-  | metadata                             | {u'description': u'test instance'}   |
-  +--------------------------------------+--------------------------------------+
+    +--------------------------------------+--------------------------------------+
+      | Property                               | Value                                  |
+    +--------------------------------------+--------------------------------------+
+    | OS-EXT-STS:task_state                  | scheduling                             |
+    | image                                  | Cirros Test                            |
+    | OS-EXT-STS:vm_state                    | building                               |
+    | OS-EXT-SRV-ATTR:instance_name          | instance-000045c5                      |
+    | OS-SRV-USG:launched_at                 | None                                   |
+    | flavor                                 | m1.tiny                                |
+    | id                                     | 52b3ade2-285a-454d-a87e-f93af8bd59e8 |  
+	| security_groups                        | [{u'name': u'default'}]                |
+    | user_id                                | 49996ac695564577b18ecfac865f4488       |
+    | OS-DCF:diskConfig                      | MANUAL                                 |
+    | accessIPv4                             |                                        |
+    | accessIPv6                             |                                        |
+    | progress                               | 0                                      |
+    | OS-EXT-STS:power_state                 | 0                                      |
+    | OS-EXT-AZ:availability_zone            | nova                                   |
+    | config_drive                           |                                        |
+    | status                                 | BUILD                                  |
+    | updated                                | 2014-09-04T11:57:55Z                   |
+    | hostId                                 |                                        |
+    | OS-EXT-SRV-ATTR:host                   | None                                   |
+    | OS-SRV-USG:terminated_at               | None                                   |
+    | key_name                               | ssh_key1                               |
+    | OS-EXT-SRV-ATTR:hypervisor_hostname    | None                                   |
+    | name                                   | instance1                              |
+    | adminPass                              | XXXXXXX                                |
+    | tenant_id                              | 3e4608c9747348c79b887b19242ccf23       |
+    | created                                | 2014-09-04T11:57:54Z                   |
+    | os-extended-volumes:volumes_attached | []                                     |
+    | metadata                               | {u'description': u'test instance'}     |
+    +--------------------------------------+--------------------------------------+
 
 5. To see the current status of the started instance, use the command below:
 
