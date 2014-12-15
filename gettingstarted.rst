@@ -941,16 +941,16 @@ Launch Instance via CLI Command
 
 2. Compile all the parameters necessary and execute the nova boot command. See example command below::
 
-  $ nova --os-username=user1 --os-tenant-name=”my tenant” --os-auth-url=https://api.preview.cloudlynx.ch/api/keystone/v2.0/ boot --flavor m1.tiny --image 55b1a2b7-75a2-49dc-a0e9-99fb17ac1b54 --key_name ssh_key1 --meta description=”my test instance” --nic net-id=82f3c9b1-945e-4674-8f84-21d713ad85c4 NameOfTheInstance
+    $ nova --os-username=user1 --os-tenant-name=”my tenant” --os-auth-url=https://api.preview.cloudlynx.ch/api/keystone/v2.0/ boot --flavor m1.tiny --image 55b1a2b7-75a2-49dc-a0e9-99fb17ac1b54 --key_name ssh_key1 --meta description=”my test instance” --nic net-id=82f3c9b1-945e-4674-8f84-21d713ad85c4 NameOfTheInstance
 
 3. Nova prompts for your OS-password (Cloudlynx user log in). Provide the password.::
 
-  OS Password: 
+    OS Password: 
 
 4. If the password is correct, the nova boot command will execute and launch the instance and the following overview of the started instance is shown in the terminal.::
 
     +--------------------------------------+--------------------------------------+
-      | Property                               | Value                            |
+    | Property                             | Value                                |
     +--------------------------------------+--------------------------------------+
     | OS-EXT-STS:task_state                | scheduling                           |
     | image                                | Cirros Test                          |
@@ -959,7 +959,7 @@ Launch Instance via CLI Command
     | OS-SRV-USG:launched_at               | None                                 |
     | flavor                               | m1.tiny                              |
     | id                                   | 52b3ade2-285a-454d-a87e-f93af8bd59e8 |  
-	| security_groups                      | [{u'name': u'default'}]              |
+    | security_groups                      | [{u'name': u'default'}]              |
     | user_id                              | 49996ac695564577b18ecfac865f4488     |
     | OS-DCF:diskConfig                    | MANUAL                               |
     | accessIPv4                           |                                      |
@@ -985,7 +985,7 @@ Launch Instance via CLI Command
 
 5. To see the current status of the started instance, use the command below::
 
-  $ nova -show 'name of your instance'
+    $ nova -show 'name of your instance'
   
 Launch an Instance using API 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1000,4 +1000,64 @@ Launch an Instance Using Orchestration
 Orchestration allows the management of infrastructure resources for cloud applications including (among others) instance creation and autoscaling in the form of a scaling group in the Heat template (main project in the OpenStack orchestration programme).
 
 For more detailed information on how to launch an instance using orchestration, see :ref:`orchestration`. 
+
+Make a Snapshot of an Instance
+------------------------------
+
+1. Select the **Instances** sub-menu item under the **Manage Compute** section on the side bar. 
+2. Click on the **Create Snapshot** button on the right side of the instance.
+
+.. image:: _static/gettingstarted/fig57.png
+   :alt: Instances - Create a Snapshot
+   
+3. The **Create Snapshot** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig58.png
+   :alt: Create Snapshot
+   
+4. Specify a name for the snapshot.
+5. Click on the **Create Snapshot** button to create a snapshot.
+
+**Note:** The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
+
+**Note:** During the process of making a snapshot the instance will not be responsive.
+
+Accessing an Instance
+---------------------
+
+There are several ways to access an instance. This largely depends on the operating system of the instance and also on the client operating system accessing the instance.
+
+Cloudlynx provides configured Linux images so that the instance has to be accessed over SSH for the first login. During the first login over SSH, a password can be set and additional users can be created.
+
+**Note:** This document will cover accessing a Linux instance via SSH on Linux, SSH on Windows and over the Cloudlynx dashboard console. The prerequisites are defined for these access methods only. Other access methods might require different prerequisites.
+
+Prerequisites
+^^^^^^^^^^^^^
+
+The following prerequisites must be fulfilled before accessing an instance over SSH:
+* The following network related tasks must be completed (see chapter 4 Create and Manage a Network).
+
+  * subnet defined
+  * router defined for the subnet
+  * interface defined for the router
+  * instance is in a subnet using a router to the public network so it is reachable from outside
+
+* Public key is uploaded to the cloud and assigned to the instance during the initial instance creation (see chapter 3 Key Management).
+* Floating IP has been associated to the instance (see chapter 8.3 Floating IPs).
+* TCP Port 22 (SSH) traffic is enabled to the instance in the security group that has been assigned to the instance (see chapter 8 Configure and Manage Security).
+
+For the Linux images provided by Cloudlynx, please refer to the **Image Detail** page of the **Image** to see which user has to be used for the first login.
+
+To see the image detail information of an image:
+1. Click on the **Images & Snapshots** sub-menu item under the **Manage Compute** section on the side bar.
+
+.. image:: _static/gettingstarted/fig59.png
+   :alt: Manage Compute – Images & Snapshots
+
+2. Click on the name of the image in the **Image Name** field to open the **Image Detail** pane.
+
+.. image:: _static/gettingstarted/fig60.png
+   :alt: Image Detail – Image Overview
+
+3. The **Login User** is the username which must to be used for the first login.
 
