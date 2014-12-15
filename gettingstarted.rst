@@ -124,6 +124,7 @@ SSH keypairs are used to access instances securely without specifying a password
 
 **Note:** To access a Linux-based instance for the first time, it must be accessed using an SSH keypair. This applies to the Linux images provided by Cloudlynx only.
 
+.. _create-keypair:
 Create a New Keypair
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -213,7 +214,7 @@ To create a keypair on a Linux client, follow the steps below:
 Import an Existing Keypair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A keypair can be generated with an external tool that creates OpenSSH formatted keys (see section 3.1 Create a New Keypair). Any type of an OpenSSH key is accepted.
+A keypair can be generated with an external tool that creates OpenSSH formatted keys (see section :ref:`create-keypair`). Any type of an OpenSSH key is accepted.
 
 1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
 2. Click on the **Keypairs** tab. 
@@ -248,8 +249,8 @@ Delete a Keypair
 
 **Note:** This will delete the public key on the system. The private key is not affected.
 
-Create and Manage a Network
----------------------------
+Networks
+--------
 
 Cloudlynx provides a scalable, pluggable and API-driven system for managing network connectivity and IP addresses. It allows users to create their own networks and control the traffic. 
 
@@ -275,7 +276,7 @@ Create a Network
 9. The network is created.
 10. The network now appears in the list of networks under **Manage Network > Networks**
 
-**Note:** A subnet must be specified to be able to launch an instance (see chapter 5 Create and Manage a Subnet)
+**Note:** A subnet must be specified to be able to launch an instance (see :ref:`subnets`)
 
 Edit a Network
 ^^^^^^^^^^^^^^
@@ -300,9 +301,11 @@ Delete a Network
 
 **Warning:** Make sure that there are no instances attached to the network you want to delete.
 
-Create and Manage a Subnet
---------------------------
+.. _subnets:
+Subnets
+-------
 
+.. _create-subnet:
 Create a Subnet
 ^^^^^^^^^^^^^^^
 
@@ -372,8 +375,8 @@ Delete a Subnet
 .. image:: _static/gettingstarted/fig16.png
    :alt: Delete a Subnet
    
-Create and Manage a Router
---------------------------
+Routers
+-------
 
 A router is needed to establish a connection between subnets or to connect a subnet to the public network so that the instances can be reached over the internet.
 
@@ -427,3 +430,87 @@ Delete a Router
 .. image:: _static/gettingstarted/fig20.png
    :alt: Delete Routers
 
+Network Topology
+----------------
+
+The **Network Topology** page represents a graphical overview of the created networks.
+The following buttons are available at the top of the **Network Topology** page:
+
+* Launch Instance
+* Create Network
+* Create Router
+
+There are also two buttons called **Small** and **Normal**. Those will change the view of the network topology, to either give you more space if you have a lot of networks (**Small**) or show you more details (**Normal**) including IP addresses and names.
+
+Hover over **Instance** and **Router** icons to see the details and also to perform certain actions, for example:
+
+* Terminate an instance
+* View instance details
+* Open the console
+* Delete a router
+* Delete an interface
+
+By clicking on the network name the **Network Detail** page will be opened, showing a network overview, related subnets and ports.
+
+.. image:: _static/gettingstarted/fig21.png
+   :alt: Network Topology
+
+View Network Detail
+^^^^^^^^^^^^^^^^^^^
+
+1. Select **Network Topology** on the side bar under the **Manage Network** section. 
+2. Click on the name of the network you want to know more about.
+3. The **Network Overview** page of the selected network is displayed.
+
+From the **Network Overview** page it is possible to create, edit or delete a subnet, as well as to edit ports. (For more information how to create a subnet see :ref:`create-subnet`). 
+
+.. image:: _static/gettingstarted/fig22.png
+   :alt: Network Detail
+   
+Edit a Subnet
+^^^^^^^^^^^^^
+
+1. Select **Network Topology** on the side bar under the **Manage Network** section. 
+2. Click on the name of the network to view the **Network Detail** page.
+3. Click on the **Edit Subnet** button of the subnet you want to edit.
+4. The **Update Subnet** dialogue box is opened. Under the **Subnet** tab the editable fields are: **Subnet Name** and **Gateway IP** (optional).
+
+.. image:: _static/gettingstarted/fig23.png
+   :alt: Update Subnet tab
+
+5. Under the **Subnet Detail** tab the editable fields are:
+  * **Enable DHCP** – Select this check box to enable DHCP.
+  * **DNS Name Servers** – Update the name for the DNS server.
+  * **Host Routes** – Update the IP address of host routes.
+6. Click on the **Update** button to save changes.
+
+.. image:: _static/gettingstarted/fig24.png
+   :alt: Update Subnet Detail tab
+   
+Delete a Subnet
+^^^^^^^^^^^^^^^
+
+1. Select **Network Topology** on the side bar under the **Manage Network** section. 
+2. Click on the name of the network to view **Network Detail**.
+3. On the **Network Detail** page, mark the subnets that need to be deleted.
+4. Click on the **Delete Subnets** button on the upper right.
+5. Confirm the action by clicking on the **Delete Subnets** button.
+
+**Note:** This action cannot be undone.
+
+.. image:: _static/gettingstarted/fig25.png
+   :alt: Delete a Subnet
+   
+Configure and Manage Security
+-----------------------------
+
+Before launching an instance, the security group rules should be configured to select which types of traffic instances are able to send and receive.
+
+Security Groups
+^^^^^^^^^^^^^^^
+
+A **Security Group** is a named collection of firewall rules which are used to limit the types of traffic that can be send from or received by a particular instance or group of instances. An instance can have one or more security groups assigned. 
+
+The default security group and a newly created security group have some predefined firewall rules:
+* Default security group – allows all outgoing traffic to anywhere on IPv4 and IPv6. Allows incoming traffic from other default security group instances
+* Unmodified new security group – allows all outgoing traffic to anywhere on IPv4 and IPv6
