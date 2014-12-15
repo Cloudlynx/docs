@@ -5,8 +5,8 @@ The following list contains known issues on our current platform. The issues wil
 Instances
 ---------
 
-1: Creating a volume from an image fails when the volume is sized smaller than disk size of the image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Creating a volume from an image fails when the volume is sized smaller than disk size of the image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 When creating a volume from an image (or a snapshot of an instance) the Dashboard will suggest a size for the volume based on the listed size of the image.
@@ -21,8 +21,8 @@ The minimum size for all images provided by Cloudlynx is 10GB.
 
 For snapshots of instances, the minimum size is the ephemeral disk size of the instance from which the snapshot was created.
 
-2: The resize function for instances doesn't work
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The resize function for instances doesn't work
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 
@@ -36,8 +36,8 @@ Instead of resizing an existing instance, create a new instance of desired flavo
 Networking
 ----------
 
-3: Multiple or repeated IP addresses may be shown in the Dashboard for running instances
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Multiple or repeated IP addresses may be shown in the Dashboard for running instances
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 
@@ -54,7 +54,7 @@ Disregard the additional, incorrect IP addresses.
 Request identical instances in smaller batches (e.g. 10 or 20 at a time).
 
 The "Disassociate Floating IP" option in the Dashboard also releases the IP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 
@@ -66,7 +66,7 @@ Workaround
 When disassociating a floating IP from an instance in the Dashboard, use the "disassociate" button on the "Floating IP" tab of the “Access & Security” page instead of the "Disassociate Floating IP" option on the "Instances" page.
 
 Removing an ICMP allow rule from a security group doesn't affect floating IPs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 
@@ -83,7 +83,7 @@ Images
 ------
 
 Large image uploads fail when submitted via the Dashboard
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 
@@ -95,7 +95,7 @@ Workaround
 Larger images can be uploaded via the Glance API or command line client or using the "Image Location" option via the Dashboard.
 
 Image uploads via the Glance API or command line client fail when the upload takes more than 6 hours or exceeds 1TiB
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Description
 """""""""""
 
