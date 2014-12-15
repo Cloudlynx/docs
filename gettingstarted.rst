@@ -734,6 +734,8 @@ This document will cover the following options in detail:
 * Boot from a snapshot
 * Boot from a volume
 
+.. _launch-instance-dashboard:
+
 Launch an Instance from the Dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -797,3 +799,74 @@ The Instance Boot Sources are:
 
 .. image:: _static/gettingstarted/fig50.png
    :alt: Instances - Status
+
+Launch an Instance from Image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Images & Snapshots** contains the list of all available images and snapshots for the project. This includes pre-built images provided by Cloudlynx, public images shared by users of the Cloudlynx cloud and images created and uploaded to the current project (non-public).
+
+
+To launch an instance directly from a pre-built image:
+
+1. Click on **Images & Snapshots** sub-menu item under the **Manage Compute** section on the side bar.
+2. Navigate using the buttons **Project**, **Cloudlynx images**, **Shared with Me** and **Public** to select an image to be used for launching an instance.
+
+.. image:: _static/gettingstarted/fig51.png
+   :alt: Images & Snapshots – Images
+   
+3. Click on the **Launch** button on the right of the image you want to start. The dialogue window will appear.
+4. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard.
+
+**Note:** The fields **Instance Boot Source** and **Image Name** are pre-populated with the chosen image information.
+
+.. image:: _static/gettingstarted/fig52.png
+   :alt: Launch Instance – Details – Boot from image
+   
+Launch an Instance from a Snapshot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Launching an instance from a snapshot requires an already existing snapshot. For information on how to create a snapshot see chapter :ref:`snapshot-instance`.
+
+1. Click on the **Images & Snapshots** sub-menu item under the **Manage Compute** section on the side bar.
+2. Make sure the button **Project** is active (top of page) so as to be able to see your own image snapshots.
+3. Find the snapshot you want to use in the **Images** list (Type: Snapshot) and click on the **Launch** button on the very right.
+
+.. image:: _static/gettingstarted/fig53.png
+   :alt: Images & Snapshots – Images
+   
+4. The **Launch Instance** pop-up window will appear.
+5. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard on how to launch an instance.
+
+**Note:** The fields **Instance Boot Source** and **Instance Snapshot** are pre-populated with the chosen Image information.
+
+**Note:** The list **Volume Snapshots** contains snapshots that cannot be used as a boot source.
+
+.. image:: _static/gettingstarted/fig54.png
+   :alt: Launch Instance – Details – Boot from Snapshot
+   
+Launch an Instance from a Volume
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Launching an instance from a volume requires an already existing volume with an image on it. For information on how to create a volume with an image refer to chapter 14 Create a Volume.
+
+1. Select the **Instances** sub-menu item under the **Manage Compute** section on the side bar.
+
+.. image:: _static/gettingstarted/fig55.png
+   :alt: Manage Compute – Instances
+   
+2. Click on the **Launch Instance** button. The **Launch Instance** pop-up window is displayed.
+3. In the drop-down menu under **Instance Boot Source** select **Boot from volume**.
+4. Select the correct volume to be used as the boot source.
+5. Follow the steps described in chapter :ref:`launch-instance-dashboard` from the Dashboard for information on how to launch an instance.
+
+.. image:: _static/gettingstarted/fig56.png
+   :alt: Launch Instance – Details – Volume
+   
+Launch an Instance Using CLI
+----------------------------
+
+To launch an instance using the CLI, the OpenStack client needs to be installed and configured on the local Linux client (see chapter :ref:`cli`).
+
+**Note:** All commands shown are for Linux based operating systems. This chapter will not cover Windows based operating systems
+
+   
