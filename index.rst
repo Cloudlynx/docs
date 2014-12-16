@@ -6,6 +6,7 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
    :maxdepth: 3
    
    gettingstarted
+   accountmanagement
    faq
    knownissues
    
