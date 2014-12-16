@@ -252,8 +252,8 @@ Delete a Keypair
 
 **Note:** This will delete the public key on the system. The private key is not affected.
 
-Networks
---------
+Create and Manage a Network
+---------------------------
 
 Cloudlynx provides a scalable, pluggable and API-driven system for managing network connectivity and IP addresses. It allows users to create their own networks and control the traffic. 
 
@@ -306,8 +306,8 @@ Delete a Network
 
 .. _subnets:
 
-Subnets
--------
+Create and Manage a Subnet
+--------------------------
 
 .. _create-subnet:
 
@@ -380,8 +380,8 @@ Delete a Subnet
 .. image:: _static/gettingstarted/fig16.png
    :alt: Delete a Subnet
    
-Routers
--------
+Create and Manage a Router
+--------------------------
 
 A router is needed to establish a connection between subnets or to connect a subnet to the public network so that the instances can be reached over the internet.
 
@@ -891,16 +891,17 @@ Minimum required variables to launch an instance:
     $ nova flavor-list
 
 3. Access and security credentials
-  * A keypair for your instance. For the keypair to be successfully injected, the image must contain the cloud-init package.:
+
+  * A keypair for your instance. For the keypair to be successfully injected, the image must contain the cloud-init package.::
   
     $ nova keypair-list
 
 
-  * A security group that defines which incoming network traffic is forwarded to instances. Security groups hold a set of firewall policies, known as security group rules.:
+  * A security group that defines which incoming network traffic is forwarded to instances. Security groups hold a set of firewall policies, known as security group rules.::
   
     $ nova secgroup-list
 
-4. The network which the instance will be connected to.:
+4. The network which the instance will be connected to.::
 
     $ nova network-list
 
@@ -1001,6 +1002,8 @@ Orchestration allows the management of infrastructure resources for cloud applic
 
 For more detailed information on how to launch an instance using orchestration, see :ref:`orchestration`. 
 
+.. _snapshot-instance:
+
 Make a Snapshot of an Instance
 ------------------------------
 
@@ -1021,6 +1024,8 @@ Make a Snapshot of an Instance
 **Note:** The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
 
 **Note:** During the process of making a snapshot the instance will not be responsive.
+
+.. _accessing-instance:
 
 Accessing an Instance
 ---------------------
@@ -1060,4 +1065,698 @@ To see the image detail information of an image:
    :alt: Image Detail – Image Overview
 
 3. The **Login User** is the username which must to be used for the first login.
+
+Accessing a Linux Instance via SSH Using a Keypair on Linux
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When accessing an instance from a local Linux client via SSH, the private key file (.pem) must be stored in the Linux client and have the file permissions configured correctly to enable an SSH connection to the instance.
+
+The following tasks must also be performed before an instance can be accessed via SSH using a keypair on Linux:
+
+* Private key file and directory must have the correct file permissions set
+* Private key file must be added to the SSH-agent
+
+1. Open Terminal.
+
+.. image:: _static/gettingstarted/fig61.png
+   :alt: Local Linux client terminal.
+   
+2. Set the private key directory (e.g. /home/user/keys) permission to read, write and execute.::
+
+    $ sudo chmod 700 /PrivateKeyPath
+
+3. Set the private key (e.g. /home/user/keys/privatekey.pem) permission to read and write.::
+
+    $ sudo chmod 600 /PrivateKeyPath/PrivateKeyFile
+
+4. Add the private key to SSH-agent.::
+
+    $ sudo ssh-add /PrivateKeyPath/PrivateKeyFile
+
+**Note:** This adds RSA or DSA identities to the authentication agent.
+
+5. Connect to the instance via SSH using the keypair. The user is the local user of the instance which is defined in the image (see Chapter 11.1 Prerequisites).::
+
+    ssh –i /PrivateKeyPath/PrivateKeyFile UserOfTheInstance@IPaddress
+
+6. The command line connection has been established with the instance.
+
+.. image:: _static/gettingstarted/fig62.png
+   :alt: Command line connection to instance.
+   
+Accessing a Linux Instance via SSH Using a Keypair on Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When accessing an instance via a local Windows client, an SSH programme for Windows is required to access an instance via SSH. In the following example, the PuTTY program is used.
+
+The following programs must to be installed before continuing:
+
+* PuTTY (SSH program)
+* Pageant (SSH authentication agent)
+* Optional: PuTTYgen (Converts .pem keys to the  .ppk format that PuTTY uses)
+
+**Note:** All of the programmes mentioned above are open source and free. Please visit www.putty.org for more information.
+
+The following tasks must be performed before an instance can be accessed via SSH using a keypair on Windows:
+
+* Public key is uploaded to the Cloudlynx dashboard and was used to setup the instance.
+* SSH (22) port is open for ingress traffic. This is done with a rule which is part of the security group to which the instance belongs to (see chapter 0 ).
+* The private key is in the .ppk format.
+* The private key is added to Pageant.
+
+
+1. Verify that the private key of your keypair is in the .ppk format (If a conversion is required, see chapter 3 Key Management for instructions using PuTTYgen).
+2. Open Pageant.
+
+.. image:: _static/gettingstarted/fig63.png
+   :alt: SSH-authentication agent Pageant.
+   
+3. Press the **Add Key** button to add the private key (.ppk format) to Pageant (enter the passphrase if required).
+4. The key should now be listed in Pageant.
+
+.. image:: _static/gettingstarted/fig64.png
+   :alt: Private Key added to Pageant.
+   
+5. Press the **Close** button, Pageant will still run in the background.
+6. Open the PuTTY application.
+7. Expand the **Connection** section to see the **SSH** sub-menu. 
+
+.. image:: _static/gettingstarted/fig65.png
+   :alt: PuTTY client.
+   
+8. Expand the **SSH** section to see the **Auth** sub-menu.
+9. Click on the **Auth** sub-menu.
+
+.. image:: _static/gettingstarted/fig66.png
+   :alt: PuTTY – SSH authentication options.
+   
+10. Check the **Allow agent forwarding** box.
+11. Click on the **Browse** button.
+12. Locate and select the private key file (.ppk format).
+
+.. image:: _static/gettingstarted/fig67.png
+   :alt: Private Key defined for PuTTY.
+   
+13. Click on the **Session** section.
+14. Add the IP address (Floating IP of the instance) to the **Host Name (or IP address)** field.
+
+.. image:: _static/gettingstarted/fig68.png
+   :alt: PuTTY - Define Host Name to connect to.
+  
+15. Click on the **Open** button to open an SSH connection to the instance.
+16. The session window will now open and prompt for the user name (may vary depending on the image).
+17. Enter the **user name** which you are using to log in to the terminal (to find out which is the default user name of the image, see chapter 11.1 Prerequisites).
+18. The command line connection has been established to the instance.
+
+.. image:: _static/gettingstarted/fig69.png
+   :alt: Command line access to instance established.
+
+Accessing an Instance over the Cloudlynx Dashboard Console
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Note:** For Cloudlynx provided Linux images, the first login must be done over SSH, using one of the methods described above. This is the only way a password can be set or more users added. 
+
+**Note:** For the Cloudlynx dashboard console of Cloudlynx provided Linux images, access is only possible with a user and a password, no SSH keypair can be used. Set a password or create a user over a SSH connection first.
+
+1. Click on the **Instances** sub-menu item under the **Manage Compute** section on the side bar.
+2. Click on the name of the instance in the list of instances available.
+3. The **Instance Detail** page opens.
+4. Select the **Console** tab at the top of that page.
+5. The instance output is now shown in the console window.
+
+.. image:: _static/gettingstarted/fig70.png
+   :alt: Dashboard – Instance Console
+   
+**Note:** If the instance is not reacting on your keyboard, click on the grey status bar.
+
+Transfer Files to and from a Linux Instance
+-------------------------------------------
+
+Files can be transferred to and from a Linux instance using scp and sftp. Before you do so, make sure the public key is added to the instance and port 22 is open.
+
+File Transfers Using scp (secure remote copy)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to transfer files to and from an instance depends on the local operating system. How to proceed when using a Linux/MacOSX computer is described in :ref:`scp-linux-linux`, when using a Windows computer in :ref:`scp-windows-linux`.
+
+.. _scp-linux-linux:
+
+scp Between a Local Linux and a Linux Instance
+""""""""""""""""""""""""""""""""""""""""""""""
+
+To transfer files from a local computer to the instance in the cloud proceed as follows:
+
+1. Install OpenSSH (if not already installed).
+2. Add your private key to the ssh agent. 
+3. Execute the following scp command in your terminal::
+
+    scp <source file> <username of instance>@<instance IP>:<destination file>
+
+For <source file> substitute the path pointing to the file to be copied, and for <destination file> subs¬titute the desired target location. The instance IP is the floating IP which is reachable over the internet.
+
+To transfer a file from an instance in the cloud to your local file system proceed as follows:
+
+4. Execute the following scp command in your terminal::
+
+    scp <username of instance>@<instance IP>:<source file> <destination file> 
+
+The <destination file> in this case is the file on the local computer.
+
+**Note:** Scp can also be used to copy files from one instance to another within the cloud.
+
+.. _scp-windows-linux:
+
+scp Between a Local Windows Computer and a Linux Instance
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+We recommend WinSCP to copy files from a Windows computer to a Linux instance and vice versa. You can run pageant on your local Windows computer and add the private key for easier management when also using PuTTY for SSH connection.
+
+1. Start WinSCP and click the **New Site** button.
+2. Click on the **Advanced** button on the right. A new window pops-up.
+3. Click **SSH** and then **Authentification** on the left. 
+4. Activate the checkbox **Allow agent forwarding** under **Authentication parameters**. 
+5. Provide the location of the private key in the **Private key file** field (should be in the .ppk format).
+6. Click on the **OK** button to close the Advanced Site Settings windows.
+7. Choose SCP as the protocol in the **File protocol** dropdown menu.
+8. In the **Host name** field, enter the floating IP Address of the instance the connection should be established to.
+9. Fill in the user of the instance in the **User name** field.
+10. Click on the **Save** button to save the settings.
+11. Press the **Login** button and the connection to the instance via scp will be established. A window will appear with a graphical user interface allowing the transfer of files between the local computer and the instance.
+
+**Note:** In case the connection fails, please make sure Pageant is running and contains the private .ppk key.
+
+File Transfer Using sftp (secure ftp)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sftp can be used to access an instance from a local computer. 
+
+sftp Between a Local Linux Computer and a Linux Instance
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+1. Make sure that the OpenSSH tools are installed on the local computer and that the private key has been added to the ssh agent. 
+2. Execute the following sftp command in the local terminal window:: 
+
+    sftp <username of instance>@<Instance IP>
+
+3. The command prompt of sftp is shown now. Type either help or ? to see all available commands. Please see the documentation of sftp for more details.
+
+**Note:** Please see chapter 3.1.3 for instructions on how to configure OpenSSH and add the private key to the ssh agent.
+
+sftp Between a Local Windows Computer and a Linux Instance  
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Follow the instructions in :ref:`scp-windows-linux` but instead of choosing the SCP protocol select SFTP from the dropdown menu. 
+
+Volumes
+-------
+
+Block storage allows you to add persistent block level storage to your instance. Data stored directly on the disk of an instance is ephemeral and lost permanently when the instance is terminated. It is therefore highly recommended that you use block storage, if your data needs to be stored permanently, for example when running performance sensitive applications such as databases, expandable file systems, or providing a server with access to raw block level storage.
+
+Block storage devices are called volumes. You can attach a volume to a running instance or detach a volume and attach it to another instance at any time. You can also create snapshots to back up or restore data stored on block storage volumes. Snapshots can also be used as a starting point for new volumes.
+
+This chapter deals with how to create, attach and remove volumes, how to make a snapshot, and how to delete volumes.
+
+Before you can use a volume, you need to create it (see :ref:`create-volume`) and attach it to the instance. Attaching it to the instance involves two actions: First, attach the volume to the instance in the dashboard (see chapter :ref:`attach-volume-dashboard`) and second, attach the volume to the instance from the instance itself (see chapter :ref:`attach-volume-linux` and :ref:`attach-volume-windows`).
+
+Create a Volume
+---------------
+
+1. Click on the **Volumes** tab under **Manage Compute** in the side bar. In the table on the right you see all the volumes created so far (if you have not created a volume yet, it will be empty).
+
+.. image:: _static/gettingstarted/fig71.png
+   :alt: Volumes.
+   
+2. Click on the **Create Volume** button in the top right corner.
+3. The **Create Volume** popup appears.
+4. **Volume Name** – Add a suitable name for the volume in the box provided.
+5. **Description** – Optionally, add a description for the volume.
+6. **Type** – Leave the **Type** box blank (currently not supported).
+7. **Size (GB)** – Specify the number of GB for the volume. Check the Volume Limits on the right side for the available amount of GB (**Total Gigabytes** bar).
+8. **Volume Source** – Select the volume source. 
+
+  * Selecting **No source, empty volume** creates an empty volume (like an unformatted physical hard drive).
+  * Select **Image**, if you want to start with a predefined image.
+  * Select **Snapshot**, if you want to create a volume from a snapshot.
+  
+9. Click the **Create Volume** button. 
+10. You can see the volume you created in the **Volumes** table list.
+
+.. image:: _static/gettingstarted/fig72.png
+   :alt: Create Volume
+   
+**Note:** The **Volume Source** options will not display the snapshot option if there are no existing snapshots in your project.
+
+**Note:** If you choose **No Source, empty volume** it does not contain a file system or a partition table.
+
+Attach a Volume to an Instance
+------------------------------
+
+.. _attach-volume-dashboard:
+
+Attach a Volume to an Instance in the Cloudlynx Dashboard
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Click **Volumes** under **Manage Compute** on the side bar.
+2. Find the volume you want to attach in the table on the right.
+3. Click the **Edit Attachments** button under **Actions** on the right hand side of the table.
+4. A window appears (**Manage Volume Attachments**). 
+5. From the **Attach to Instance** dropdown menu, select the instance to which the volume should be attached. An instance needs to be launched first before you can attach a volume. If there is no instance, the list will be empty.
+6. Under **Device Name** enter the name of the device.
+7. Click **Attach Volume**.
+8. In the **Volumes** table you can see the instance to which the volume has been attached.
+
+**Note:** Several volumes can be attached to one instance. In Linux the device name should be in alphabetical order, e.g. the first volume is /dev/vdb, the second is /dev/vdc and so on.
+
+.. image:: _static/gettingstarted/fig73.png
+   :alt: Manage Volume Attachments – Attach to Instance
+
+.. _attach-volume-linux:   
+
+Attach a Volume to a Linux Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Attaching a volume to a Linux instance involves three steps: 
+
+1. Attach a volume to the instance in the Cloudlynx dashboard (:ref:`attach-volume-dashboard`)
+2. Initialise the volume (:ref:`init-volume-linux`)
+3. Mount the volume in the instance (Chapter 15.2.2)
+
+.. _init-volume-linux:
+
+Initialize a Volume Attached in a Linux Instance
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Caution:** Any data that might be on the volume will be lost when initialising the volume. This step should therefore only be performed if the volume is empty, i.e. the first time a volume is attached to an instance. 
+
+1. Connect to the instance using SSH (see :ref:`accessing-instance`)
+2. List all attached block storage devices::
+
+    $ lsblk
+
+3. Find the name of the attached block storage (e.g. /dev/vdc).
+4. Create a file system on the device by giving in the following command (where <device> is the name of the attached block storage, e.g. /dev/vdc)::
+
+    $ sudo mkfs.ext4 <device>
+
+**Note:** The name of the attached block storage can be changed by the OS of the instance if the device name is already taken.
+
+Mount a Volume on a Linux Instance
+""""""""""""""""""""""""""""""""""
+
+1. Create a directory under /media where the volume should be mounted by executing the following command (replace the information in red)::
+
+    $ sudo mkdir –p /media/<volume name>
+
+2. Mount the volume by executing the following command::
+
+    $ sudo mount <device> /media/<volume name>
+	
+Attach a Volume in a Windows Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Attaching a volume to a Windows instance involves three steps:
+
+1. Attach a volume to the instance in the Cloudlynx Dashboard (:ref:`attach-volume-dashboard`)
+2. Make the instance recognise the volume (:ref:`volume-windows-online`)
+3. Initialise the volume if it is newly created (:ref:`volume-windows-init`)
+
+.. _volume-windows-online:
+
+Make a Volume Be Online
+"""""""""""""""""""""""
+
+1. As soon as Windows has been set up in the instance, go to the **Start** menu and select **Administrative Tools** followed by **Computer Management**.
+2. On the left of the window, select **Disk Management** under the menu option **Storage**. 
+3. Locate the name of the attached volume and right-click on it.
+4. In the resulting context menu, select **Online**.
+5. If the volume was initialised before, it will now be available for use and you can skip the next section :ref:`volume-windows-init`.
+
+.. _volume-windows-init:
+
+Initialise a Volume Attached to a Windows Instance
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Caution:** As all data will be destroyed when initialising the volume, only do so if the volume is empty. 
+
+1. Open the **Disk Management** window.
+2. Right-click the name of the volume and select the option **Initialise Disk**.
+3. Click **OK** in the dialogue window to initialise it.
+4. Right-click on the white field next to the name of the disk where it says **Unallocated** and select **New Simple Volume**. This will start the **New Simple Volume Wizard**. 
+5. Follow the wizard instructions. 
+6. The volume is ready to be used as soon as the wizard has formatted the disk.
+
+.. _detach-volume:
+
+Detach a Volume from an Instance
+--------------------------------
+
+Detaching a volume from an instance involves two steps:
+
+1. Unmount the volume in the instance (:ref:`volume-unmount-linux` and :ref:`volume-unmount-windows`)
+2. Detach it from the dashboard (Chapter 16.3)
+
+.. _volume-unmount-linux:
+
+Unmount a Volume in a Linux Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Caution: The volume must not be in use.
+
+1. Unmount the volume by performing the following command::
+
+    sudo umount /media/<volume name>
+
+2. Follow the instructions in :ref:`detach-volume-dashboard`.
+
+.. _volume-unmount-windows:
+
+Unmount a Volume in a Windows Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow the steps in :ref:`volume-windows-online` but select **Offline** instead of **Online** from the context menu.
+
+.. _detach-volume-dashboard:
+
+Detach a Volume from Instance in the Cloud Dashboard
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Click **Volumes** under **Manage Compute**.
+2. Go to the volume you want to detach and click **Edit Attachments**.
+3. Click on **Detach Volume**.
+
+.. image:: _static/gettingstarted/fig74.png
+   :alt: Manage Volume Attachments – Detach Volume
+   
+4. Click on the button **Detach Volume** in the **Confirm Detach Volume** popup to confirm the action.
+
+.. image:: _static/gettingstarted/fig75.png
+   :alt: Confirm Detach Volume
+   
+5. The status of the volume is back to **Available**.
+
+Create a Snapshot of a Volume
+-----------------------------
+
+We offer the possibility to take a snapshot of a volume. Before you do so, make sure that the volume involved is not attached to an instance. If it is, detach it first (Chapter 16). 
+
+To create a snapshot, proceed as follows:
+
+1. Click the **Volumes** tab under **Manage Compute** on the dashboard sidebar.
+2. Go to the volume listed on the table you want to take a snapshot of.
+3. From the **More** dropdown menu select **Create Snapshot**. Click it. The **Create Volume Snapshot** window pops up.
+
+.. image:: _static/gettingstarted/fig76.png
+   :alt: Create Volume Snapshot
+   
+4. Specify a name for the snapshot and, optionally, provide a description.
+5. Click the **Create Volume Snapshot** button.
+6. The snapshot is now listed in **Images & Snapshots** under the side bar menu **Manage Compute**.
+
+.. image:: _static/gettingstarted/fig77.png
+   :alt: Images & Snapshots
+   
+Delete a Volume
+---------------
+
+**Caution:** Volumes that are attached to an instance cannot be deleted. Thus, make sure you detach any volumes before you attempt to delete them (:ref:`detach-volume`). Check the volume **Status** column to see if the volume is detached (it should say **Available**) or still attached (**In-Use**). 
+
+**Note:** Delete any snapshots associated with the volume before deleting the volume.
+
+1. Click **Volumes** under **Manage Compute**.
+2. Select the volumes you want to delete.
+3. Select **Delete Volume** from the **More** dropdown menu on the right.
+
+.. image:: _static/gettingstarted/fig78.png
+   :alt: Volumes, More, Delete Volume
+   
+4. Click **Confirm Delete Volume** to confirm your action.
+
+.. image:: _static/gettingstarted/fig79.png
+   :alt: Confirm Delete Volume
+   
+Object Storage
+--------------
+
+Object Storage is a fully distributed, API-accessible storage platform that can be integrated directly into applications or used for backup, archiving and data retention.
+
+Create a Container
+^^^^^^^^^^^^^^^^^^
+
+1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
+
+.. image:: _static/gettingstarted/fig80.png
+   :alt: Object Store – Containers
+   
+2. In the table on the right hand side, all containers created so far are shown (if a container has not been created yet, it will be empty).
+3. Click on the **Create Container** button in the table. A **Create Container** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig81.png
+   :alt: Containers – Create Container
+   
+4. Fill out the **Container Name** field to give the instance a unique name with which it can be identified. 
+
+**Note:** The names are case sensitive.
+
+5. Click on the **Create Container** button.
+6. The object store container created will be visible in the **Containers** table list.
+
+.. image:: _static/gettingstarted/fig82.png
+   :alt: Containers – successfully created container
+   
+Store Objects in a Container
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
+2. From the list of **Containers**, select the container where to upload the file.
+
+.. image:: _static/gettingstarted/fig83.png
+   :alt: Containers – Upload an Object
+   
+3. Click on the **Upload Object** button on the right (If the button is not visible, click on the name of the container). The **Upload Object to Container** pop-up window is displayed.
+4. Fill out the **Object Name** field to give the instance a unique name to be identified with. This will be the name of the file under which it will be stored in the container. 
+5. Select a file to be uploaded.
+
+.. image:: _static/gettingstarted/fig84.png
+   :alt: Upload Object to Container
+   
+6. Click on the **Upload Object** button to finalise the upload.
+7. The uploaded file will be visible in the table on the left hand side of the **Containers** page.
+
+.. image:: _static/gettingstarted/fig85.png
+   :alt: Containers – successfully upload an object
+   
+Retrieve Objects from a Container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
+2. From the list of **Containers**, select the container from where to retrieve a file.
+3. Click on the **Download** button to the right of the file to be downloaded.
+4. The download starts, possibly after asking where to save the file.
+
+.. image:: _static/gettingstarted/fig86.png
+   :alt: Containers – download an object file
+
+.. _delete-one-object:
+   
+Delete One Object from a Container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
+2. From the list of **Containers**, select the container from where to delete the file.
+3. Click on the **Delete Object** option from the **More** dropdown menu button to the right of the file to be deleted. The **Confirm Delete Object** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig87.png
+   :alt: Containers – delete a file
+   
+4. Click on the **Delete Object** button to confirm the deletion. 
+
+**Note:** This action cannot be undone!
+
+.. image:: _static/gettingstarted/fig88.png
+   :alt: Confirm Delete Object 
+   
+Delete Multiple Object from One Container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Select the **Containers** sub-menu item under **Object Store** section.
+2. From the list of **Containers**, select the container from where to delete files.
+3. Select the files to be deleted by clicking the check boxes to the left of the file names.
+4. Click the **Delete Objects** button at the top right corner of the **Container** page. The **Confirm Delete Objects** pop-up window is displayed.
+5. Click on the **Delete Objects** button to confirm the deletion. 
+
+**Note:** This action cannot be undone!
+
+.. image:: _static/gettingstarted/fig89.png
+   :alt: Confirm Delete Objects 
+
+.. _copy-objects:
+   
+Copy Objects
+^^^^^^^^^^^^
+
+1. Select the **Containers** sub-menu item under the **Object Store** section.
+2. From the list of **Containers**, select the container containing the file to be copied.
+3. Click on the **Copy** option from the **More** dropdown menu button to the right of the file to be copied. The **Copy Object** pop-up window is displayed.
+
+.. image:: _static/gettingstarted/fig90.png
+   :alt: Copy Object
+
+4. Choose a container from the **Destination container** dropdown menu as the location where the file will be copied to.
+5. Fill out the **Destination object name** field to give the copy of the file a new name.
+
+**Note:** The object name must be unique (case sensitive) in the destination container. If the filename already exists, an error will occur and the copy will fail.
+
+**Warning:** Do not enter a path in this pop-up window. This path must be left blank!
+
+6. Click on the **Copy Object** button to confirm the copy.
+7. The copied file will be visible in the table on the left hand side of the **Containers** page under the specified **Container**.
+
+.. image:: _static/gettingstarted/fig91.png
+   :alt: Containers – successfully copied file message
+   
+Move Objects
+^^^^^^^^^^^^
+
+At the moment there is no move action. Instead copy the file and delete the original file.
+
+1. Copy the file (see :ref:`copy-objects`).
+2. Delete the original file (see :ref:`delete-one-object`).
+
+Delete a Container
+^^^^^^^^^^^^^^^^^^
+A container can only be deleted once the container no longer has any objects attached to it.
+
+1. Delete all contents in the container. See chapters 19.4 and 19.5 for detailed instructions.
+2. Click on the **Delete Container** option from the **More** dropdown menu button next to the container you want to delete.
+
+.. image:: _static/gettingstarted/fig92.png
+   :alt: Containers – Delete Container
+   
+3. A **Confirm Delete Container** pop-up window is displayed.
+4. Click on the **Delete Container** button to confirm the deletion.
+
+.. image:: _static/gettingstarted/fig93.png
+   :alt: Confirm Delete Container
+   
+Search a Container
+^^^^^^^^^^^^^^^^^^
+
+1. Type in the file name or part of it in the **Filter** box above the table listing the contents of the container you want to search and click on the **Filter** button.
+
+.. image:: _static/gettingstarted/fig94.png
+   :alt: Containers – search container
+   
+2. The results of the search are displayed, hiding the files that did not match the search.
+
+.. image:: _static/gettingstarted/fig95.png
+   :alt: Containers – filter results
+   
+**Note:** The filter filters both the name field and the size field.
+
+.. _cli:
+
+Command Line Interface (CLI)
+----------------------------
+
+The installation process in this document is for Linux distributions using packages. For Mac OS X, Microsoft Windows, or Linux installations using **pip**, please refer to the OpenStack documentation: http://docs.openstack.org/user-guide/content/install_clients.html.
+
+**Note:** The installation of the OpenStack client packages depends on the Linux distribution.
+
+Install OpenStack Clients for CLI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Search for the OpenStack client package in the distribution’s repository of your Linux distribution.
+For example, the package is **python-openstackclient** for Red Hat Enterprise Linux based systems (RHEL) and **openstack-clients** for Debian based systems.
+
+RHEL (for example Fedora)::
+
+    $ sudo yum install –y python-openstackclient
+
+Debian::
+
+    $ sudo apt-get install openstack-clients
+
+
+**Note:** If the client package cannot be found on your Linux distribution, you may have to update your repository or install an additional one, please refer to: https://openstack.redhat.com/Quickstart (step 1) for RHEL-based Linux distributions.
+
+By executing the command above, the following clients are installed:
+
+* Ceilometer – telemetry API
+* Cinder – block storage API and extensions
+* Glance – image service API
+* Heat – orchestration API
+* Keystone – identity service API and extensions
+* Neutron – networking API
+* Nova – compute API and extensions
+* Swift – object storage API
+
+Set Environment Variables via OpenStack RC File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before running client commands, download and source the openrc.sh file to set environment variables (described in the next chapter).
+
+To set the required environment variables for the OpenStack command-line clients, download an environment file called an OpenStack rc file, or openrc.sh file. This project-specific environment file contains the credentials that all OpenStack services use.
+
+When you source the file, environment variables are set for your current shell. The variables enable the OpenStack client commands to communicate with the OpenStack services that run in the cloud.
+
+Download and Source the OpenStack RC File
+"""""""""""""""""""""""""""""""""""""""""
+
+1. Log in to the Cloudlynx dashboard and choose the project for which to download the OpenStack RC file.
+2. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
+3. Click on the **API Access** tab and click **Download OpenStack RC File** and save the file.
+
+.. image:: _static/gettingstarted/fig96.png
+   :alt: Access and Security – download OpenStack rc file
+   
+**Note:** The filename will be of the form **PROJECT-openrc.sh** where *PROJECT* is the name of the project for which the file was downloaded.
+
+4. Copy the **PROJECT-openrc.sh** file to the computer from which the OpenStack commands are run.
+5. On any shell from which the OpenStack commands are run, source the **PROJECT-openrc.sh** file for the respective project.::
+
+    $ source /home/CloudUser/Downloads/CloudCompany-openrc.sh
+
+6. When prompted for the OpenStack password, enter the password for the user who downloaded the **PROJECT-openrc.sh** file (Login credentials of the Cloudlynx dashboard account).::
+
+    Please enter your OpenStack Password:
+
+Override Environment Variable Values
+""""""""""""""""""""""""""""""""""""
+
+With OpenStack client commands, some environment variable settings can be overridden by using the options that are listed at the end of the **help** output of the various client commands.
+
+If needed, the OS-password setting in the **PROJECT-openrc.sh** file can be overridden by specifying a password on a **keystone** command, as follows::
+
+    $ keystone --os-password <password> service-list
+
+Where <password> is your Cloudlynx OpenStack password.
+	
+.. _api:
+	
+API
+---
+
+An application programming interface (API) is a combination of programming instructions and standards for accessing the functionality of a piece of software. 
+
+With APIs, a single interaction can cause multiple requests to happen in the background, while only showing the actual result for the end user. As such, APIs should not be considered as a user interface, but rather an interface where two or more software components communicate with each other.
+
+With OpenStack APIs it is possible to launch server instances, create images, assign metadata to instances and images, create containers and objects, and complete other actions. Using the APIs will offer you 100% of the available functionality.
+
+Also there are several SDKs available, e.g. for Java, .Net, PHP and Python (http://developer.openstack.org/#sdk).
+
+APIs as a topic is too vast for this how-to document. To learn more about APIs, please refer to the OpenStack page (http://developer.openstack.org/).
+
+.. _orchestration:
+
+Orchestration
+-------------
+
+The orchestration service is a template-driven engine that allows application developers, systems administrators, and engineers to describe and automate the deployment and management of the cloud infrastructure which is hosting their applications.
+
+An orchestration template describes the infrastructure for a cloud application in a text file that is readable and writable by humans. It can include the definition of instances, volumes, security groups, floating IPs, the relation between those components, and so on.
+
+The template needs to be passed to the orchestration service which then processes and builds the defined infrastructure to create a stack. Also it can use an auto-scaling to automatically add or remove cloud infrastructure components (e.g. instances or volumes) in response to changes in utilisation, and to regenerate failed components.
+
+Orchestration as a topic is too vast for this how-to document. To learn more about orchestration, please refer to the OpenStack page (https://wiki.openstack.org/wiki/Heat).
+
+
 
