@@ -17,7 +17,7 @@ The document covers the following topics how to:
 
 Before using the Cloudlynx Billing environment, we recommend reading this document to familiarise yourself with the system. 
 
-.. sidebar: **Note:**
+.. sidebar:: **Note:**
 
    Account registered using the Cloudlynx Billing application will be used for accessing Cloudlynx Dashboard and the Cloudlynx Billing application. 
 
@@ -40,7 +40,7 @@ Create a Cloudlynx Account
   * **Customer Information** – enter basic Company information. During the registration process, your Account and Project are created in the Keystone. Your **Customer Name** will be used as a Project name in the Cloud.   
   * **Payment Information** – information related to payment method that will be used for paying the invoices. Available options: ‘PayPal’ or ‘Monthly Invoicing’. 
   
-.. sidebar: **Note:** 
+.. sidebar:: **Note:** 
 
    ‘**PayPal**’ – billing will be automatically via PayPal. PayPal authorization of the automatic payment of the invoice is needed. From the registration page, you’ll be redirected to the PayPal authorization page.
    
@@ -127,7 +127,7 @@ The Billing dashboard is split into 3 sections:
 * The content pane (middle part of the screen)
 * The title bar (top part of the screen).
 
-.. sidebar: **Note:**
+.. sidebar:: **Note:**
 
    Directions given in this document will use the definitions above. 
 
@@ -206,7 +206,7 @@ Create a User
 .. image:: _static/accountmanagement/fig4.png
    :alt: Add User
 
-.. sidebar: **Note:** 
+.. sidebar:: **Note:** 
 
    For Customer’s Users the following roles are predefined:
 
@@ -277,7 +277,7 @@ You as a Customer can request a change in the Cloud usage quotas. Change of the 
 9. The quotas are increased as requested, or remain the same in a case of rejection.  
 10. After approval process, you will get an e-mail notification about your quota change request either the quota request has been approved or rejected.  
 
-.. sidebar: **Important:**
+.. sidebar:: **Important:**
 
    If a quota increase is requested, approval is needed from the Cloudlynx administrators. E-mail notification is sent containing the request for quota change. Cloudlynx administrator approves/rejects quota request. You will be informed about the quota change via e-mail. If you request a quota decrease, quota decrease is performed automatically without any additional approval from the Cloudlynx administrators side. You will be informed about the quota change via e-mail.
 
