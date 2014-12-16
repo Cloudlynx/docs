@@ -17,7 +17,9 @@ Before using the Cloudlynx cloud environment, we recommend reading this document
 
 Additional training courses and course material are available on the Cloudlynx website: https://www.cloudlynx.ch
 
-**Note:** This document assumes you have an active Cloudlynx account.
+.. sidebar:: **Note:** 
+
+   This document assumes you have an active Cloudlynx account.
 
 Cloudlynx Dashboard
 -------------------
@@ -32,9 +34,13 @@ To log in to the Cloudlynx dashboard, use the link provided in the welcome email
 .. image:: _static/gettingstarted/fig1.png
    :alt: Log In window
 
-**Note:** The registration process is not covered in this document. For more information, please visit https://www.cloudlynx.ch/en/registration.
+.. sidebar:: **Note:** 
 
-**Note:** In the case of a forgotten password, please go to the account management site https://preview.cloudlynx.ch/account.
+   The registration process is not covered in this document. For more information, please visit https://www.cloudlynx.ch/en/registration.
+
+.. sidebar:: **Note:**
+
+   In the case of a forgotten password, please go to the account management site https://preview.cloudlynx.ch/account.
 
 Overview of the Cloudlynx Dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -51,7 +57,9 @@ The Cloudlynx dashboard is split into 3 sections:
 .. image:: _static/gettingstarted/fig2.png
    :alt: Dashboard Overview
 
-**Note:** Directions given in this document will use the definitions above.
+.. sidebar:: **Note:**
+
+   Directions given in this document will use the definitions above.
 
 The Side Bar
 """"""""""""
@@ -81,8 +89,9 @@ The side bar has the following menu structure:
 
 * Stacks: execute automatic deployment of a whole cloud setup (including compute, block storage, object storage, network etc.)
 
+.. sidebar:: **Note:**
 
-**Note:** The Red Hat tab forwards you to the Red Hat Customer Portal. This feature should not be used, as it will be removed in future updates. A Red Hat account or subscription is required for accessing this section.
+   The Red Hat tab forwards you to the Red Hat Customer Portal. This feature should not be used, as it will be removed in future updates. A Red Hat account or subscription is required for accessing this section.
 
 The Content Pane
 """"""""""""""""
@@ -90,7 +99,9 @@ The Content Pane
 This section displays the main content. The shown content will vary depending on the topic selected from the side bar.
 On the **Overview** page you are able to query current and past cloud usage, as well as export the results. This can be done by selecting a **From:** and **To:** date and pressing **Submit**. The results are then displayed.
 
-**Note:** The Date format needs to be YYYY-MM-DD.
+.. sidebar:: **Note:**
+
+   The Date format needs to be YYYY-MM-DD.
 
 .. image:: _static/gettingstarted/fig3.png
    :alt: Select a period of time to query its usage
@@ -124,7 +135,9 @@ Key Management
 
 SSH keypairs are used to access instances securely without specifying a password each time. A keypair can be used for multiple instances that belong to the same project.
 
-**Note:** To access a Linux-based instance for the first time, it must be accessed using an SSH keypair. This applies to the Linux images provided by Cloudlynx only.
+.. sidebar:: **Note:**
+
+   To access a Linux-based instance for the first time, it must be accessed using an SSH keypair. This applies to the Linux images provided by Cloudlynx only.
 
 .. _create-keypair:
 
@@ -144,7 +157,9 @@ On the Dashboard
 6. The private key is available for download (the web browser may prompt you with download options). Cloudlynx will only store the public key in the project.
 7. The keypair now appears on the list of available keypairs under **Access & Security > Keypairs**.
 
-**Note:** The private key has been generated in the browser and there is no copy of the private key in the cloud nor is there a recovery option. The only existing copy is the one you have saved (the .pem file). Treat it like any other private key you may have and make sure not to lose it. 
+.. sidebar:: **Note:**
+
+   The private key has been generated in the browser and there is no copy of the private key in the cloud nor is there a recovery option. The only existing copy is the one you have saved (the .pem file). Treat it like any other private key you may have and make sure not to lose it. 
 
 .. image:: _static/gettingstarted/fig6.png
    :alt: Create Keypair
@@ -175,7 +190,9 @@ To create a keypair on a Linux client, follow the steps below:
 	$ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
     Generating public/private rsa keypair.
 
-**Note:** Recommended options to be used when creating the SSH key are (they are case sensitive):
+.. sidebar:: **Note:**
+
+   Recommended options to be used when creating the SSH key are (they are case sensitive):
 
 * -b (set the bitrate of the key) 4096 for RSA and 1024 for DSA
 * -t (set the type of the key) RSA or DSA
@@ -226,9 +243,13 @@ A keypair can be generated with an external tool that creates OpenSSH formatted 
 5. Copy and paste the content of the public key into the **Public Key** field.
 6. Click on the **Import Keypair** button to finish.
 
-**Note:** The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one.
+.. sidebar:: **Note:**
 
-**Note:** An error message may occur if the format of the key is not OpenSSH.
+   The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one.
+
+.. sidebar:: **Note:**
+
+   An error message may occur if the format of the key is not OpenSSH.
 
 Translate non-OpenSSH key to OpenSSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,9 +269,13 @@ Delete a Keypair
 3. Click on the checkbox on the left of the keypair to be deleted.
 4. Click on the **Delete Keypair** button.
 
-**Note:** This action cannot be undone.
+.. sidebar:: **Note:**
 
-**Note:** This will delete the public key on the system. The private key is not affected.
+   This action cannot be undone.
+
+.. sidebar:: **Note:**
+
+   This will delete the public key on the system. The private key is not affected.
 
 Create and Manage a Network
 ---------------------------
@@ -279,7 +304,9 @@ Create a Network
 9. The network is created.
 10. The network now appears in the list of networks under **Manage Network > Networks**
 
-**Note:** A subnet must be specified to be able to launch an instance (see :ref:`subnets`)
+.. sidebar:: **Note:**
+
+   A subnet must be specified to be able to launch an instance (see :ref:`subnets`)
 
 Edit a Network
 ^^^^^^^^^^^^^^
@@ -302,7 +329,9 @@ Delete a Network
 .. image:: _static/gettingstarted/fig11.png
    :alt: Delete Networks
 
-**Warning:** Make sure that there are no instances attached to the network you want to delete.
+.. sidebar:: **Warning:**
+
+   Make sure that there are no instances attached to the network you want to delete.
 
 .. _subnets:
 
@@ -326,9 +355,13 @@ Create a Subnet
 .. image:: _static/gettingstarted/fig12.png
    :alt: Create Subnet
 
-**Note:** A subnet represents an IP address block that can be used to assign IP addresses to virtual instances. Each subnet must have a Classless Inter-Domain Routing (CIDR) address and must be associated to a network. IP addresses can be either selected from the whole subnet CIDR or from allocation pools that can be specified by the user.
+.. sidebar:: **Note:**
 
-**Note:** A subnet can also optionally have a gateway, a list of DNS name servers, and host routes. This information is pushed to instances whose interfaces are associated with the subnet. 
+   A subnet represents an IP address block that can be used to assign IP addresses to virtual instances. Each subnet must have a Classless Inter-Domain Routing (CIDR) address and must be associated to a network. IP addresses can be either selected from the whole subnet CIDR or from allocation pools that can be specified by the user.
+
+.. sidebar:: **Note:**
+
+   A subnet can also optionally have a gateway, a list of DNS name servers, and host routes. This information is pushed to instances whose interfaces are associated with the subnet. 
 
 9. Go to the **Subnet Detail** tab in order to define additional attributes for the subnet (all optional).
 10. Mark the **Enable DHCP** checkbox to enable DHCP.
@@ -375,7 +408,9 @@ Delete a Subnet
 5. Click on the **Delete Subnets** button.
 6. Confirm the deletion of subnets by clicking on the **Delete Subnets** button.
 
-**Note:** This action cannot be undone.
+.. sidebar:: **Note:**
+
+   This action cannot be undone.
 
 .. image:: _static/gettingstarted/fig16.png
    :alt: Delete a Subnet
@@ -417,7 +452,9 @@ Set a Gateway
 5. Enter the router interface **IP address** for the selected subnet. 
 6. Click on the **Add Interface** button to finish.
 
-**Note:** If the IP address value is not set, either the default gateway IP address or the first host IP address in the subnet is used by default. 
+.. sidebar:: **Note:**
+
+   If the IP address value is not set, either the default gateway IP address or the first host IP address in the subnet is used by default. 
 
 .. image:: _static/gettingstarted/fig19.png
    :alt: Add Interface
@@ -430,7 +467,9 @@ Delete a Router
 3. Click on the **Delete Routers** button.
 4. Confirm the action by clicking on the **Delete Routers** button. 
 
-**Note:** This action cannot be undone. 
+.. sidebar:: **Note:**
+
+   This action cannot be undone. 
 
 .. image:: _static/gettingstarted/fig20.png
    :alt: Delete Routers
@@ -503,7 +542,9 @@ Delete a Subnet
 4. Click on the **Delete Subnets** button on the upper right.
 5. Confirm the action by clicking on the **Delete Subnets** button.
 
-**Note:** This action cannot be undone.
+.. sidebar:: **Note:**
+
+   This action cannot be undone.
 
 .. image:: _static/gettingstarted/fig25.png
    :alt: Delete a Subnet
@@ -555,9 +596,13 @@ To delete a security group, proceed as follows:
 3. Click on the **Delete Security Groups** button. 
 4. Confirm the security group deletion by clicking on the **Delete Security Groups** button.
 
-**Note:** The security group cannot be deleted as long as it is being used for one or more instances.
+.. sidebar:: **Note:**
 
-**Note:** The deletion of a security group cannot be undone.
+   The security group cannot be deleted as long as it is being used for one or more instances.
+
+.. sidebar:: **Note:**
+
+   The deletion of a security group cannot be undone.
 
 .. image:: _static/gettingstarted/fig29.png
    :alt: Confirm Delete Security Group
@@ -572,7 +617,9 @@ The following parameters for rules must be specified:
 * **Destination Port On Instances** – Define a port range. To open a single port, enter the same value twice. The Internet Control Message Protocol (ICMP) does not support ports; enter values to define the codes and types of ICMP traffic to be allowed instead. 
 * **Source of Traffic** – The source can be defined either as an IP address, an IP address range, or as another security group in the cloud.
 
-**Note:** Rules are automatically enforced for that security group as soon as you create or modify them. This takes effect on the instances that have the security group assigned to it.
+.. sidebar:: **Note:**
+
+   Rules are automatically enforced for that security group as soon as you create or modify them. This takes effect on the instances that have the security group assigned to it.
 
 .. image:: _static/gettingstarted/fig30.png
    :alt: Edit Security Group Rules
@@ -613,7 +660,9 @@ For example, to enable only SSH and ICMP (Internet Control Message Protocol), pi
 .. image:: _static/gettingstarted/fig33.png
    :alt: Security Group Rules – successfully added new rule
    
-**Note:** Once a rule is created, it cannot be edited later. If a rules needs to be changed, it needs to be deleted and created as a new rule with new parameters.
+.. sidebar:: **Note:**
+
+   Once a rule is created, it cannot be edited later. If a rules needs to be changed, it needs to be deleted and created as a new rule with new parameters.
 
 Delete a Rule
 """""""""""""
@@ -624,7 +673,9 @@ Delete a Rule
 4. Click on the **Delete Rules** button.
 5. Confirm the rule deletion by clicking on the **Delete Rules** button. 
 
-**Note:** This action cannot be undone. 
+.. sidebar:: **Note:**
+
+   This action cannot be undone. 
 
 Floating IPs
 ^^^^^^^^^^^^
@@ -722,7 +773,9 @@ Launch an Instance
 
 Cloudlynx provides multiple methods to launch an instance, ranging from the GUI based dashboard, Command Line Interface and API commands to orchestration templates.
 
-**Note:** To launch an instance the following prerequisites must be fulfilled:
+.. sidebar:: **Note:**
+
+   To launch an instance the following prerequisites must be fulfilled:
 
 * The person launching the instance must have the correct login details for the account.
 * The network is correctly defined and includes at least one subnet.
@@ -773,13 +826,17 @@ The Instance Boot Sources are:
 * **Boot from image (creates a new volume)** – Boot from an image and create a volume by entering the device size and device name for your volume. Select the **Delete on Terminate** option to delete the volume on terminating the instance.
 * **Boot from volume snapshot (creates a new volume)** - boot from a **volume snapshot** and create a new volume by choosing **Volume Snapshot** from the list and adding a **Device Name** for your volume. Click the **Delete on Terminate** option to delete the volume on terminating the instance.
 
-**Note:** Please see the relevant chapters for more information on how to create and upload those boot sources (e.g. chapter Volume for creating a volume and a snapshot of a volume).
+.. sidebar:: **Note:**
+
+   Please see the relevant chapters for more information on how to create and upload those boot sources (e.g. chapter Volume for creating a volume and a snapshot of a volume).
 
 8. Click on the **Access & Security** tab.
 9. Select an existing keypair from the dropdown list or click on the + button to upload a new keypair (See chapter :ref:`key-management` for more information).
 10. Specify **Admin Pass** if launching a Windows-based instance.
 
-**Note:** **Admin Pass** is currently an untested feature. The Cloud-init package is required to use this feature.
+.. sidebar:: **Note:**
+
+   **Admin Pass** is currently an untested feature. The Cloud-init package is required to use this feature.
 
 11. Select the security groups to be used for the instance. The **default** box under **Security Group** is checked by default (See chapter 8 Configure and Manage Security for more information). Multiple security groups can be chosen.
 
@@ -792,7 +849,9 @@ The Instance Boot Sources are:
 .. image:: _static/gettingstarted/fig48.png
    :alt: Launch Instance – Networking
    
-**Note:** Several networks can be added to the same instance.
+.. sidebar:: **Note:**
+
+   Several networks can be added to the same instance.
 
 14. The **Post-Creation** tab allows to use scripts (for example Bash) that can be run after launching an instance or instances
 
@@ -823,7 +882,9 @@ To launch an instance directly from a pre-built image:
 3. Click on the **Launch** button on the right of the image you want to start. The dialogue window will appear.
 4. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard.
 
-**Note:** The fields **Instance Boot Source** and **Image Name** are pre-populated with the chosen image information.
+.. sidebar:: **Note:**
+
+   The fields **Instance Boot Source** and **Image Name** are pre-populated with the chosen image information.
 
 .. image:: _static/gettingstarted/fig52.png
    :alt: Launch Instance – Details – Boot from image
@@ -843,9 +904,13 @@ Launching an instance from a snapshot requires an already existing snapshot. For
 4. The **Launch Instance** pop-up window will appear.
 5. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard on how to launch an instance.
 
-**Note:** The fields **Instance Boot Source** and **Instance Snapshot** are pre-populated with the chosen Image information.
+.. sidebar:: **Note:**
 
-**Note:** The list **Volume Snapshots** contains snapshots that cannot be used as a boot source.
+   The fields **Instance Boot Source** and **Instance Snapshot** are pre-populated with the chosen Image information.
+
+.. sidebar:: **Note:**
+
+   The list **Volume Snapshots** contains snapshots that cannot be used as a boot source.
 
 .. image:: _static/gettingstarted/fig54.png
    :alt: Launch Instance – Details – Boot from Snapshot
@@ -873,7 +938,9 @@ Launch an Instance Using CLI
 
 To launch an instance using the CLI, the OpenStack client needs to be installed and configured on the local Linux client (see chapter :ref:`cli`).
 
-**Note:** All commands shown are for Linux based operating systems. This chapter will not cover Windows based operating systems
+.. sidebar:: **Note:**
+
+   All commands shown are for Linux based operating systems. This chapter will not cover Windows based operating systems
 
 Gather Parameters to Launch an Instance
 """""""""""""""""""""""""""""""""""""""
@@ -896,7 +963,6 @@ Minimum required variables to launch an instance:
   
     $ nova keypair-list
 
-
   * A security group that defines which incoming network traffic is forwarded to instances. Security groups hold a set of firewall policies, known as security group rules.::
   
     $ nova secgroup-list
@@ -913,11 +979,15 @@ Additionally the following information is needed
   * OS-username (Cloudlynx login name)
   * OS-password (Cloudlynx login password)
   * OS-tenant-name (project name as displayed in the Cloudlynx dashboard side bar)
-  * OS-auth-url (The Identitiy (Keystone) API url can be found following the steps in chapter :ref:`cli`).)
+  * OS-auth-url (The Identitiy (Keystone) API url can be found following the steps in :ref:`cli`).)
 
-**Note:** In this chapter the wording ‘OS’ in variables or parameters refers to ‘OpenStack’ (Cloudlynx) and not ‘Operating System’.
+.. sidebar:: **Note:**
 
-**Note:** Using the command line interface, an instance can be launched from an **image** or a **volume**, but not from a **snapshot**. 
+   In this section the wording ‘OS’ in variables or parameters refers to ‘OpenStack’ (Cloudlynx) and not ‘Operating System’.
+
+.. sidebar:: **Note:**
+
+   Using the command line interface, an instance can be launched from an **image** or a **volume**, but not from a **snapshot**. 
 
 Launch Instance via CLI Command
 """""""""""""""""""""""""""""""
@@ -1021,9 +1091,13 @@ Make a Snapshot of an Instance
 4. Specify a name for the snapshot.
 5. Click on the **Create Snapshot** button to create a snapshot.
 
-**Note:** The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
+.. sidebar:: **Note:**
 
-**Note:** During the process of making a snapshot the instance will not be responsive.
+   The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
+
+.. sidebar:: **Note:**
+
+   During the process of making a snapshot the instance will not be responsive.
 
 .. _accessing-instance:
 
@@ -1034,7 +1108,9 @@ There are several ways to access an instance. This largely depends on the operat
 
 Cloudlynx provides configured Linux images so that the instance has to be accessed over SSH for the first login. During the first login over SSH, a password can be set and additional users can be created.
 
-**Note:** This document will cover accessing a Linux instance via SSH on Linux, SSH on Windows and over the Cloudlynx dashboard console. The prerequisites are defined for these access methods only. Other access methods might require different prerequisites.
+.. sidebar:: **Note:**
+
+   This document will cover accessing a Linux instance via SSH on Linux, SSH on Windows and over the Cloudlynx dashboard console. The prerequisites are defined for these access methods only. Other access methods might require different prerequisites.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -1093,7 +1169,9 @@ The following tasks must also be performed before an instance can be accessed vi
 
     $ sudo ssh-add /PrivateKeyPath/PrivateKeyFile
 
-**Note:** This adds RSA or DSA identities to the authentication agent.
+.. sidebar:: **Note:**
+
+   This adds RSA or DSA identities to the authentication agent.
 
 5. Connect to the instance via SSH using the keypair. The user is the local user of the instance which is defined in the image (see Chapter 11.1 Prerequisites).::
 
@@ -1115,7 +1193,9 @@ The following programs must to be installed before continuing:
 * Pageant (SSH authentication agent)
 * Optional: PuTTYgen (Converts .pem keys to the  .ppk format that PuTTY uses)
 
-**Note:** All of the programmes mentioned above are open source and free. Please visit www.putty.org for more information.
+.. sidebar:: **Note:**
+
+   All of the programmes mentioned above are open source and free. Please visit www.putty.org for more information.
 
 The following tasks must be performed before an instance can be accessed via SSH using a keypair on Windows:
 
@@ -1174,9 +1254,13 @@ The following tasks must be performed before an instance can be accessed via SSH
 Accessing an Instance over the Cloudlynx Dashboard Console
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Note:** For Cloudlynx provided Linux images, the first login must be done over SSH, using one of the methods described above. This is the only way a password can be set or more users added. 
+.. sidebar:: **Note:**
 
-**Note:** For the Cloudlynx dashboard console of Cloudlynx provided Linux images, access is only possible with a user and a password, no SSH keypair can be used. Set a password or create a user over a SSH connection first.
+   For Cloudlynx provided Linux images, the first login must be done over SSH, using one of the methods described above. This is the only way a password can be set or more users added. 
+
+.. sidebar:: **Note:**
+
+   For the Cloudlynx dashboard console of Cloudlynx provided Linux images, access is only possible with a user and a password, no SSH keypair can be used. Set a password or create a user over a SSH connection first.
 
 1. Click on the **Instances** sub-menu item under the **Manage Compute** section on the side bar.
 2. Click on the name of the instance in the list of instances available.
@@ -1221,7 +1305,9 @@ To transfer a file from an instance in the cloud to your local file system proce
 
 The <destination file> in this case is the file on the local computer.
 
-**Note:** Scp can also be used to copy files from one instance to another within the cloud.
+.. sidebar:: **Note:**
+
+   Scp can also be used to copy files from one instance to another within the cloud.
 
 .. _scp-windows-linux:
 
@@ -1242,7 +1328,9 @@ We recommend WinSCP to copy files from a Windows computer to a Linux instance an
 10. Click on the **Save** button to save the settings.
 11. Press the **Login** button and the connection to the instance via scp will be established. A window will appear with a graphical user interface allowing the transfer of files between the local computer and the instance.
 
-**Note:** In case the connection fails, please make sure Pageant is running and contains the private .ppk key.
+.. sidebar:: **Note:**
+
+   In case the connection fails, please make sure Pageant is running and contains the private .ppk key.
 
 File Transfer Using sftp (secure ftp)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1259,7 +1347,9 @@ sftp Between a Local Linux Computer and a Linux Instance
 
 3. The command prompt of sftp is shown now. Type either help or ? to see all available commands. Please see the documentation of sftp for more details.
 
-**Note:** Please see chapter 3.1.3 for instructions on how to configure OpenSSH and add the private key to the ssh agent.
+.. sidebar:: **Note:**
+
+   Please see chapter 3.1.3 for instructions on how to configure OpenSSH and add the private key to the ssh agent.
 
 sftp Between a Local Windows Computer and a Linux Instance  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1305,9 +1395,13 @@ Create a Volume
 .. image:: _static/gettingstarted/fig72.png
    :alt: Create Volume
    
-**Note:** The **Volume Source** options will not display the snapshot option if there are no existing snapshots in your project.
+.. sidebar:: **Note:**
 
-**Note:** If you choose **No Source, empty volume** it does not contain a file system or a partition table.
+   The **Volume Source** options will not display the snapshot option if there are no existing snapshots in your project.
+
+.. sidebar:: **Note:**
+
+   If you choose **No Source, empty volume** it does not contain a file system or a partition table.
 
 Attach a Volume to an Instance
 ------------------------------
@@ -1326,7 +1420,9 @@ Attach a Volume to an Instance in the Cloudlynx Dashboard
 7. Click **Attach Volume**.
 8. In the **Volumes** table you can see the instance to which the volume has been attached.
 
-**Note:** Several volumes can be attached to one instance. In Linux the device name should be in alphabetical order, e.g. the first volume is /dev/vdb, the second is /dev/vdc and so on.
+.. sidebar:: **Note:**
+
+   Several volumes can be attached to one instance. In Linux the device name should be in alphabetical order, e.g. the first volume is /dev/vdb, the second is /dev/vdc and so on.
 
 .. image:: _static/gettingstarted/fig73.png
    :alt: Manage Volume Attachments – Attach to Instance
@@ -1347,7 +1443,9 @@ Attaching a volume to a Linux instance involves three steps:
 Initialize a Volume Attached in a Linux Instance
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-**Caution:** Any data that might be on the volume will be lost when initialising the volume. This step should therefore only be performed if the volume is empty, i.e. the first time a volume is attached to an instance. 
+.. sidebar:: **Caution:**
+
+   Any data that might be on the volume will be lost when initialising the volume. This step should therefore only be performed if the volume is empty, i.e. the first time a volume is attached to an instance. 
 
 1. Connect to the instance using SSH (see :ref:`accessing-instance`)
 2. List all attached block storage devices::
@@ -1359,7 +1457,9 @@ Initialize a Volume Attached in a Linux Instance
 
     $ sudo mkfs.ext4 <device>
 
-**Note:** The name of the attached block storage can be changed by the OS of the instance if the device name is already taken.
+.. sidebar:: **Note:**
+
+   The name of the attached block storage can be changed by the OS of the instance if the device name is already taken.
 
 Mount a Volume on a Linux Instance
 """"""""""""""""""""""""""""""""""
@@ -1399,7 +1499,9 @@ Make a Volume Be Online
 Initialise a Volume Attached to a Windows Instance
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-**Caution:** As all data will be destroyed when initialising the volume, only do so if the volume is empty. 
+.. sidebar:: **Caution:**
+
+   As all data will be destroyed when initialising the volume, only do so if the volume is empty. 
 
 1. Open the **Disk Management** window.
 2. Right-click the name of the volume and select the option **Initialise Disk**.
@@ -1481,9 +1583,13 @@ To create a snapshot, proceed as follows:
 Delete a Volume
 ---------------
 
-**Caution:** Volumes that are attached to an instance cannot be deleted. Thus, make sure you detach any volumes before you attempt to delete them (:ref:`detach-volume`). Check the volume **Status** column to see if the volume is detached (it should say **Available**) or still attached (**In-Use**). 
+.. sidebar:: **Caution:**
 
-**Note:** Delete any snapshots associated with the volume before deleting the volume.
+   Volumes that are attached to an instance cannot be deleted. Thus, make sure you detach any volumes before you attempt to delete them (:ref:`detach-volume`). Check the volume **Status** column to see if the volume is detached (it should say **Available**) or still attached (**In-Use**). 
+
+.. sidebar:: **Note:**
+
+   Delete any snapshots associated with the volume before deleting the volume.
 
 1. Click **Volumes** under **Manage Compute**.
 2. Select the volumes you want to delete.
@@ -1518,7 +1624,9 @@ Create a Container
    
 4. Fill out the **Container Name** field to give the instance a unique name with which it can be identified. 
 
-**Note:** The names are case sensitive.
+.. sidebar:: **Note:**
+
+   The names are case sensitive.
 
 5. Click on the **Create Container** button.
 6. The object store container created will be visible in the **Containers** table list.
@@ -1573,7 +1681,9 @@ Delete One Object from a Container
    
 4. Click on the **Delete Object** button to confirm the deletion. 
 
-**Note:** This action cannot be undone!
+.. sidebar:: **Note:**
+
+   This action cannot be undone!
 
 .. image:: _static/gettingstarted/fig88.png
    :alt: Confirm Delete Object 
@@ -1587,7 +1697,9 @@ Delete Multiple Object from One Container
 4. Click the **Delete Objects** button at the top right corner of the **Container** page. The **Confirm Delete Objects** pop-up window is displayed.
 5. Click on the **Delete Objects** button to confirm the deletion. 
 
-**Note:** This action cannot be undone!
+.. sidebar:: **Note:**
+
+   This action cannot be undone!
 
 .. image:: _static/gettingstarted/fig89.png
    :alt: Confirm Delete Objects 
@@ -1607,9 +1719,13 @@ Copy Objects
 4. Choose a container from the **Destination container** dropdown menu as the location where the file will be copied to.
 5. Fill out the **Destination object name** field to give the copy of the file a new name.
 
-**Note:** The object name must be unique (case sensitive) in the destination container. If the filename already exists, an error will occur and the copy will fail.
+.. sidebar:: **Note:**
 
-**Warning:** Do not enter a path in this pop-up window. This path must be left blank!
+   The object name must be unique (case sensitive) in the destination container. If the filename already exists, an error will occur and the copy will fail.
+
+.. sidebar:: **Warning:**
+
+   Do not enter a path in this pop-up window. This path must be left blank!
 
 6. Click on the **Copy Object** button to confirm the copy.
 7. The copied file will be visible in the table on the left hand side of the **Containers** page under the specified **Container**.
@@ -1654,7 +1770,9 @@ Search a Container
 .. image:: _static/gettingstarted/fig95.png
    :alt: Containers – filter results
    
-**Note:** The filter filters both the name field and the size field.
+.. sidebar:: **Note:**
+
+   The filter filters both the name field and the size field.
 
 .. _cli:
 
@@ -1663,7 +1781,9 @@ Command Line Interface (CLI)
 
 The installation process in this document is for Linux distributions using packages. For Mac OS X, Microsoft Windows, or Linux installations using **pip**, please refer to the OpenStack documentation: http://docs.openstack.org/user-guide/content/install_clients.html.
 
-**Note:** The installation of the OpenStack client packages depends on the Linux distribution.
+.. sidebar:: **Note:**
+
+   The installation of the OpenStack client packages depends on the Linux distribution.
 
 Install OpenStack Clients for CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1680,7 +1800,9 @@ Debian::
     $ sudo apt-get install openstack-clients
 
 
-**Note:** If the client package cannot be found on your Linux distribution, you may have to update your repository or install an additional one, please refer to: https://openstack.redhat.com/Quickstart (step 1) for RHEL-based Linux distributions.
+.. sidebar:: **Note:**
+
+   If the client package cannot be found on your Linux distribution, you may have to update your repository or install an additional one, please refer to: https://openstack.redhat.com/Quickstart (step 1) for RHEL-based Linux distributions.
 
 By executing the command above, the following clients are installed:
 
@@ -1712,7 +1834,9 @@ Download and Source the OpenStack RC File
 .. image:: _static/gettingstarted/fig96.png
    :alt: Access and Security – download OpenStack rc file
    
-**Note:** The filename will be of the form **PROJECT-openrc.sh** where *PROJECT* is the name of the project for which the file was downloaded.
+.. sidebar:: **Note:**
+
+   The filename will be of the form **PROJECT-openrc.sh** where *PROJECT* is the name of the project for which the file was downloaded.
 
 4. Copy the **PROJECT-openrc.sh** file to the computer from which the OpenStack commands are run.
 5. On any shell from which the OpenStack commands are run, source the **PROJECT-openrc.sh** file for the respective project.::
