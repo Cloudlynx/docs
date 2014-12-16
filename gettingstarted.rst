@@ -36,7 +36,7 @@ To log in to the Cloudlynx dashboard, use the link provided in the welcome email
 
 .. sidebar:: **Note:** 
 
-   The registration process is not covered in this document. For more information, please visit https://www.cloudlynx.ch/en/registration.
+   The registration process is not covered in this document. For more information, please visit https://preview.cloudlynx.ch/account/register.
 
 .. sidebar:: **Note:**
 
@@ -63,6 +63,11 @@ The Cloudlynx dashboard is split into 3 sections:
 
 The Side Bar
 """"""""""""
+
+.. sidebar:: **Note:**
+
+   The Red Hat tab forwards you to the Red Hat Customer Portal. This feature should not be used, as it will be removed in future updates. A Red Hat account or subscription is required for accessing this section.
+
 The left section of the Cloudlynx dashboard is called the side bar. Here, you will find a list of the cloud services that Cloudlynx provides as well as your current project.
 
 The side bar has the following menu structure:
@@ -89,9 +94,6 @@ The side bar has the following menu structure:
 
 * Stacks: execute automatic deployment of a whole cloud setup (including compute, block storage, object storage, network etc.)
 
-.. sidebar:: **Note:**
-
-   The Red Hat tab forwards you to the Red Hat Customer Portal. This feature should not be used, as it will be removed in future updates. A Red Hat account or subscription is required for accessing this section.
 
 The Content Pane
 """"""""""""""""
@@ -133,11 +135,11 @@ A password change should not be done via the **Settings** link in the title bar.
 Key Management
 --------------
 
-SSH keypairs are used to access instances securely without specifying a password each time. A keypair can be used for multiple instances that belong to the same project.
-
 .. sidebar:: **Note:**
 
    To access a Linux-based instance for the first time, it must be accessed using an SSH keypair. This applies to the Linux images provided by Cloudlynx only.
+   
+SSH keypairs are used to access instances securely without specifying a password each time. A keypair can be used for multiple instances that belong to the same project.
 
 .. _create-keypair:
 
@@ -149,6 +151,10 @@ There are three possibilities how to create keypairs. It can be done either dire
 On the Dashboard
 """"""""""""""""
 
+.. sidebar:: **Note:**
+
+   The private key has been generated in the browser and there is no copy of the private key in the cloud nor is there a recovery option. The only existing copy is the one you have saved (the .pem file). Treat it like any other private key you may have and make sure not to lose it. 
+
 1. Select the **Access & Security** tab under the Manage Compute section in the sidebar.
 2. Click on the **Keypairs** tab. All available keypairs for that project are listed. The list is empty by default until somebody creates or imports a keypair.
 3. Click on the **Create Keypair** button.
@@ -156,10 +162,6 @@ On the Dashboard
 5. Click on the **Create Keypair** button in the dialogue window.
 6. The private key is available for download (the web browser may prompt you with download options). Cloudlynx will only store the public key in the project.
 7. The keypair now appears on the list of available keypairs under **Access & Security > Keypairs**.
-
-.. sidebar:: **Note:**
-
-   The private key has been generated in the browser and there is no copy of the private key in the cloud nor is there a recovery option. The only existing copy is the one you have saved (the .pem file). Treat it like any other private key you may have and make sure not to lose it. 
 
 .. image:: _static/gettingstarted/fig6.png
    :alt: Create Keypair
@@ -179,20 +181,22 @@ With a Key Generator on a Local Windows Client
 .. image:: _static/gettingstarted/fig7.png
    :alt: PuTTY Key Generator
 
+.. _key-local-linux:
+   
 On a Local Linux Client
 """""""""""""""""""""""
 
 To create a keypair on a Linux client, follow the steps below:
 
-1. Open a **Terminal**.
-2. Enter the **ssh-keygen** command to start the SSH key creation. Replace the variables in the examples below with your variables::
-
-	$ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
-    Generating public/private rsa keypair.
-
 .. sidebar:: **Note:**
 
    Recommended options to be used when creating the SSH key are (they are case sensitive):
+
+1. Open a **Terminal**.
+2. Enter the **ssh-keygen** command to start the SSH key creation. Replace the variables in the examples below with your variables::
+ 
+	$ ssh-keygen -b 4096 -t rsa -C Keypair_for_Cloud_Company_Instances 
+    Generating public/private rsa keypair.
 
 * -b (set the bitrate of the key) 4096 for RSA and 1024 for DSA
 * -t (set the type of the key) RSA or DSA
@@ -234,7 +238,15 @@ To create a keypair on a Linux client, follow the steps below:
 Import an Existing Keypair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one.
+
 A keypair can be generated with an external tool that creates OpenSSH formatted keys (see section :ref:`create-keypair`). Any type of an OpenSSH key is accepted.
+
+.. sidebar:: **Note:**
+
+   An error message may occur if the format of the key is not OpenSSH.
 
 1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
 2. Click on the **Keypairs** tab. 
@@ -242,14 +254,6 @@ A keypair can be generated with an external tool that creates OpenSSH formatted 
 4. In the **Keypair Name** field, specify a name for identification purposes. 
 5. Copy and paste the content of the public key into the **Public Key** field.
 6. Click on the **Import Keypair** button to finish.
-
-.. sidebar:: **Note:**
-
-   The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one.
-
-.. sidebar:: **Note:**
-
-   An error message may occur if the format of the key is not OpenSSH.
 
 Translate non-OpenSSH key to OpenSSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -262,20 +266,19 @@ Translate non-OpenSSH key to OpenSSH
 Delete a Keypair
 ^^^^^^^^^^^^^^^^
 
-**Warning:** Instances may not be accessible anymore if the public key is deleted.
+.. sidebar:: **Warning:**
+
+   Instances may not be accessible anymore if the public key is deleted. This action cannot be undone.
 
 1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
 2. Click on the **Keypairs** tab. All available keypairs for that project are listed.
 3. Click on the checkbox on the left of the keypair to be deleted.
-4. Click on the **Delete Keypair** button.
-
-.. sidebar:: **Note:**
-
-   This action cannot be undone.
 
 .. sidebar:: **Note:**
 
    This will delete the public key on the system. The private key is not affected.
+
+4. Click on the **Delete Keypair** button.
 
 Create and Manage a Network
 ---------------------------
@@ -302,11 +305,12 @@ Create a Network
 7. Uncheck the **Create Subnet** checkbox if a subnet is not specified when the network is created.
 8. Click on the **Create** button in the dialogue window.
 9. The network is created.
-10. The network now appears in the list of networks under **Manage Network > Networks**
 
 .. sidebar:: **Note:**
 
    A subnet must be specified to be able to launch an instance (see :ref:`subnets`)
+
+10. The network now appears in the list of networks under **Manage Network > Networks**
 
 Edit a Network
 ^^^^^^^^^^^^^^
@@ -322,16 +326,16 @@ Edit a Network
 Delete a Network
 ^^^^^^^^^^^^^^^^
 
+.. sidebar:: **Warning:**
+
+   Make sure that there are no instances attached to the network you want to delete.
+
 1. Select the **Networks** tab on the side bar under the **Manage Network** section.
 2. Mark the checkboxes of the networks to delete.
 3. Click on the **Delete Networks** button.
 
 .. image:: _static/gettingstarted/fig11.png
    :alt: Delete Networks
-
-.. sidebar:: **Warning:**
-
-   Make sure that there are no instances attached to the network you want to delete.
 
 .. _subnets:
 
@@ -343,25 +347,26 @@ Create and Manage a Subnet
 Create a Subnet
 ^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   A subnet represents an IP address block that can be used to assign IP addresses to virtual instances. Each subnet must have a Classless Inter-Domain Routing (CIDR) address and must be associated to a network. IP addresses can be either selected from the whole subnet CIDR or from allocation pools that can be specified by the user. 
+
 1. Select the **Networks** sub-menu item under the **Manage Network** section.
 2. Click on the **Network name** from the list of all **Networks** for which subnet needs to be defined.
 3. Click on the **Create Subnet** button. 
 4. Specify a name for the subnet.
 5. Specify the IP address for the subnet (e.g. 192.168.0.0/24).
 6. Select **IP version**: IPv4 or IPv6 (IPv6 currently not applicable).
+
+.. sidebar:: **Note:**
+
+   A subnet can also optionally have a gateway, a list of DNS name servers, and host routes. This information is pushed to instances whose interfaces are associated with the subnet.
+
 7. Specify a **Gateway IP** address. This parameter is optional. If this field is left blank, the system will automatically take the first address of the defined subnet IP range (e.g. 192.168.0.1).
 8. **Disable Gateway** checkbox – select this check box in order to disable the gateway. 
 
 .. image:: _static/gettingstarted/fig12.png
    :alt: Create Subnet
-
-.. sidebar:: **Note:**
-
-   A subnet represents an IP address block that can be used to assign IP addresses to virtual instances. Each subnet must have a Classless Inter-Domain Routing (CIDR) address and must be associated to a network. IP addresses can be either selected from the whole subnet CIDR or from allocation pools that can be specified by the user.
-
-.. sidebar:: **Note:**
-
-   A subnet can also optionally have a gateway, a list of DNS name servers, and host routes. This information is pushed to instances whose interfaces are associated with the subnet. 
 
 9. Go to the **Subnet Detail** tab in order to define additional attributes for the subnet (all optional).
 10. Mark the **Enable DHCP** checkbox to enable DHCP.
@@ -401,16 +406,16 @@ Edit a Subnet
 Delete a Subnet
 ^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   This action cannot be undone.
+   
 1. Select **Network Topology** on the left side bar under the **Manage Network** section. 
 2. Click on the name of the network to get the **Network Detail** page.
 3. Details about the network, subnets and ports of the selected network are displayed.
 4. Under the section **Subnets**, mark the subnets that need to be deleted.
 5. Click on the **Delete Subnets** button.
 6. Confirm the deletion of subnets by clicking on the **Delete Subnets** button.
-
-.. sidebar:: **Note:**
-
-   This action cannot be undone.
 
 .. image:: _static/gettingstarted/fig16.png
    :alt: Delete a Subnet
@@ -442,19 +447,20 @@ Set a Gateway
 .. image:: _static/gettingstarted/fig18.png
    :alt: Set Gateway
 
-	
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.3	Connect a Private Network to a Router
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select the **Routers** tab on the side bar under the **Manage Network** section. 
 2. Click on the name of the router.
 3. On the **Router Details** page, click on the **Add Interface** button.
 4. In the **Add Interface** dialogue box, select a subnet from the **Subnet** dropdown list.
-5. Enter the router interface **IP address** for the selected subnet. 
-6. Click on the **Add Interface** button to finish.
 
 .. sidebar:: **Note:**
 
    If the IP address value is not set, either the default gateway IP address or the first host IP address in the subnet is used by default. 
+
+5. Enter the router interface **IP address** for the selected subnet. 
+6. Click on the **Add Interface** button to finish.
 
 .. image:: _static/gettingstarted/fig19.png
    :alt: Add Interface
@@ -462,14 +468,14 @@ Set a Gateway
 Delete a Router
 ^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   This action cannot be undone. 
+
 1. Select the **Routers** tab on the side bar under the **Manage Network** section.
 2. Mark the checkboxes of the routers that need to be deleted.
 3. Click on the **Delete Routers** button.
 4. Confirm the action by clicking on the **Delete Routers** button. 
-
-.. sidebar:: **Note:**
-
-   This action cannot be undone. 
 
 .. image:: _static/gettingstarted/fig20.png
    :alt: Delete Routers
@@ -536,15 +542,15 @@ Edit a Subnet
 Delete a Subnet
 ^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   This action cannot be undone.
+
 1. Select **Network Topology** on the side bar under the **Manage Network** section. 
 2. Click on the name of the network to view **Network Detail**.
 3. On the **Network Detail** page, mark the subnets that need to be deleted.
 4. Click on the **Delete Subnets** button on the upper right.
 5. Confirm the action by clicking on the **Delete Subnets** button.
-
-.. sidebar:: **Note:**
-
-   This action cannot be undone.
 
 .. image:: _static/gettingstarted/fig25.png
    :alt: Delete a Subnet
@@ -589,6 +595,10 @@ Create a Security Group
 Delete a Security Group
 """""""""""""""""""""""
 
+.. sidebar:: **Note:**
+
+   The security group cannot be deleted as long as it is being used for one or more instances. The deletion of a security group cannot be undone.
+
 To delete a security group, proceed as follows:
 
 1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
@@ -596,19 +606,15 @@ To delete a security group, proceed as follows:
 3. Click on the **Delete Security Groups** button. 
 4. Confirm the security group deletion by clicking on the **Delete Security Groups** button.
 
-.. sidebar:: **Note:**
-
-   The security group cannot be deleted as long as it is being used for one or more instances.
-
-.. sidebar:: **Note:**
-
-   The deletion of a security group cannot be undone.
-
 .. image:: _static/gettingstarted/fig29.png
    :alt: Confirm Delete Security Group
    
 Security Group Rules
 ^^^^^^^^^^^^^^^^^^^^
+
+.. sidebar:: **Note:**
+
+   Rules are automatically enforced for that security group as soon as you create or modify them. This takes effect on the instances that have the security group assigned to it.
 
 Modify the rules in a security group to allow access to instances through different ports and protocols. 
 
@@ -617,16 +623,16 @@ The following parameters for rules must be specified:
 * **Destination Port On Instances** – Define a port range. To open a single port, enter the same value twice. The Internet Control Message Protocol (ICMP) does not support ports; enter values to define the codes and types of ICMP traffic to be allowed instead. 
 * **Source of Traffic** – The source can be defined either as an IP address, an IP address range, or as another security group in the cloud.
 
-.. sidebar:: **Note:**
-
-   Rules are automatically enforced for that security group as soon as you create or modify them. This takes effect on the instances that have the security group assigned to it.
-
 .. image:: _static/gettingstarted/fig30.png
    :alt: Edit Security Group Rules
 
 Add a Rule to the Default Security Group
 """"""""""""""""""""""""""""""""""""""""
 
+.. sidebar:: **Note:**
+
+   Once a rule is created, it cannot be edited later. If a rules needs to be changed, it needs to be deleted and created as a new rule with new parameters.
+   
 For example, to enable only SSH and ICMP (Internet Control Message Protocol), ping access to instances and block all other traffic.
 
 1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
@@ -660,22 +666,18 @@ For example, to enable only SSH and ICMP (Internet Control Message Protocol), pi
 .. image:: _static/gettingstarted/fig33.png
    :alt: Security Group Rules – successfully added new rule
    
-.. sidebar:: **Note:**
-
-   Once a rule is created, it cannot be edited later. If a rules needs to be changed, it needs to be deleted and created as a new rule with new parameters.
-
 Delete a Rule
 """""""""""""
 
+.. sidebar:: **Note:**
+
+   This action cannot be undone. 
+   
 1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
 2. In the **Security Group** tab, click the **Edit Rules** button.
 3. Mark the checkboxes of the rules to be deleted.
 4. Click on the **Delete Rules** button.
 5. Confirm the rule deletion by clicking on the **Delete Rules** button. 
-
-.. sidebar:: **Note:**
-
-   This action cannot be undone. 
 
 Floating IPs
 ^^^^^^^^^^^^
@@ -817,6 +819,10 @@ To launch an instance via the Cloudlynx dashboard:
 
 .. image:: _static/gettingstarted/fig46.png
    :alt: Launch Instance – Instance Boot Source
+
+.. sidebar:: **Note:**
+
+   Please see the relevant chapters for more information on how to create and upload those boot sources (e.g. chapter Volume for creating a volume and a snapshot of a volume).
    
 The Instance Boot Sources are:
 
@@ -825,10 +831,6 @@ The Instance Boot Sources are:
 * **Boot from volume** – A new field for **Volume** displays. Select a volume from the list.
 * **Boot from image (creates a new volume)** – Boot from an image and create a volume by entering the device size and device name for your volume. Select the **Delete on Terminate** option to delete the volume on terminating the instance.
 * **Boot from volume snapshot (creates a new volume)** - boot from a **volume snapshot** and create a new volume by choosing **Volume Snapshot** from the list and adding a **Device Name** for your volume. Click the **Delete on Terminate** option to delete the volume on terminating the instance.
-
-.. sidebar:: **Note:**
-
-   Please see the relevant chapters for more information on how to create and upload those boot sources (e.g. chapter Volume for creating a volume and a snapshot of a volume).
 
 8. Click on the **Access & Security** tab.
 9. Select an existing keypair from the dropdown list or click on the + button to upload a new keypair (See chapter :ref:`key-management` for more information).
@@ -878,13 +880,13 @@ To launch an instance directly from a pre-built image:
 
 .. image:: _static/gettingstarted/fig51.png
    :alt: Images & Snapshots – Images
-   
-3. Click on the **Launch** button on the right of the image you want to start. The dialogue window will appear.
-4. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard.
 
 .. sidebar:: **Note:**
 
    The fields **Instance Boot Source** and **Image Name** are pre-populated with the chosen image information.
+   
+3. Click on the **Launch** button on the right of the image you want to start. The dialogue window will appear.
+4. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard.
 
 .. image:: _static/gettingstarted/fig52.png
    :alt: Launch Instance – Details – Boot from image
@@ -894,6 +896,10 @@ Launch an Instance from a Snapshot
 
 Launching an instance from a snapshot requires an already existing snapshot. For information on how to create a snapshot see chapter :ref:`snapshot-instance`.
 
+.. sidebar:: **Note:**
+
+   The fields **Instance Boot Source** and **Instance Snapshot** are pre-populated with the chosen Image information.
+
 1. Click on the **Images & Snapshots** sub-menu item under the **Manage Compute** section on the side bar.
 2. Make sure the button **Project** is active (top of page) so as to be able to see your own image snapshots.
 3. Find the snapshot you want to use in the **Images** list (Type: Snapshot) and click on the **Launch** button on the very right.
@@ -901,16 +907,12 @@ Launching an instance from a snapshot requires an already existing snapshot. For
 .. image:: _static/gettingstarted/fig53.png
    :alt: Images & Snapshots – Images
    
-4. The **Launch Instance** pop-up window will appear.
-5. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard on how to launch an instance.
-
-.. sidebar:: **Note:**
-
-   The fields **Instance Boot Source** and **Instance Snapshot** are pre-populated with the chosen Image information.
-
 .. sidebar:: **Note:**
 
    The list **Volume Snapshots** contains snapshots that cannot be used as a boot source.
+
+4. The **Launch Instance** pop-up window will appear.
+5. Follow the steps described in chapter 9.1 Launch an Instance from the Dashboard on how to launch an instance.
 
 .. image:: _static/gettingstarted/fig54.png
    :alt: Launch Instance – Details – Boot from Snapshot
@@ -936,14 +938,18 @@ Launching an instance from a volume requires an already existing volume with an 
 Launch an Instance Using CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To launch an instance using the CLI, the OpenStack client needs to be installed and configured on the local Linux client (see chapter :ref:`cli`).
-
 .. sidebar:: **Note:**
 
    All commands shown are for Linux based operating systems. This chapter will not cover Windows based operating systems
+   
+To launch an instance using the CLI, the OpenStack client needs to be installed and configured on the local Linux client (see chapter :ref:`cli`).
 
 Gather Parameters to Launch an Instance
 """""""""""""""""""""""""""""""""""""""
+
+.. sidebar:: **Note:**
+
+   Using the command line interface, an instance can be launched from an **image** or a **volume**, but not from a **snapshot**.
 
 To be able to create the launch command, several variables should be collected before using the commands below. Most commands show just a list of possible variables from where the one needed can be chosen from.
 
@@ -973,6 +979,10 @@ Minimum required variables to launch an instance:
 
 Additionally the following information is needed
 
+.. sidebar:: **Note:**
+
+   In this section the wording ‘OS’ in variables or parameters refers to ‘OpenStack’ (Cloudlynx) and not ‘Operating System’.
+
 1. A name for the instance
 2. Account information to connect to the Cloudlynx environment
 
@@ -980,14 +990,7 @@ Additionally the following information is needed
   * OS-password (Cloudlynx login password)
   * OS-tenant-name (project name as displayed in the Cloudlynx dashboard side bar)
   * OS-auth-url (The Identitiy (Keystone) API url can be found following the steps in :ref:`cli`).)
-
-.. sidebar:: **Note:**
-
-   In this section the wording ‘OS’ in variables or parameters refers to ‘OpenStack’ (Cloudlynx) and not ‘Operating System’.
-
-.. sidebar:: **Note:**
-
-   Using the command line interface, an instance can be launched from an **image** or a **volume**, but not from a **snapshot**. 
+ 
 
 Launch Instance via CLI Command
 """""""""""""""""""""""""""""""
@@ -1077,6 +1080,10 @@ For more detailed information on how to launch an instance using orchestration, 
 Make a Snapshot of an Instance
 ------------------------------
 
+.. sidebar:: **Note:**
+
+   During the process of making a snapshot the instance will not be responsive.
+
 1. Select the **Instances** sub-menu item under the **Manage Compute** section on the side bar. 
 2. Click on the **Create Snapshot** button on the right side of the instance.
 
@@ -1087,30 +1094,26 @@ Make a Snapshot of an Instance
 
 .. image:: _static/gettingstarted/fig58.png
    :alt: Create Snapshot
-   
-4. Specify a name for the snapshot.
-5. Click on the **Create Snapshot** button to create a snapshot.
 
 .. sidebar:: **Note:**
 
    The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
 
-.. sidebar:: **Note:**
-
-   During the process of making a snapshot the instance will not be responsive.
+4. Specify a name for the snapshot.
+5. Click on the **Create Snapshot** button to create a snapshot.
 
 .. _accessing-instance:
 
 Accessing an Instance
 ---------------------
 
-There are several ways to access an instance. This largely depends on the operating system of the instance and also on the client operating system accessing the instance.
-
-Cloudlynx provides configured Linux images so that the instance has to be accessed over SSH for the first login. During the first login over SSH, a password can be set and additional users can be created.
-
 .. sidebar:: **Note:**
 
    This document will cover accessing a Linux instance via SSH on Linux, SSH on Windows and over the Cloudlynx dashboard console. The prerequisites are defined for these access methods only. Other access methods might require different prerequisites.
+
+There are several ways to access an instance. This largely depends on the operating system of the instance and also on the client operating system accessing the instance.
+
+Cloudlynx provides configured Linux images so that the instance has to be accessed over SSH for the first login. During the first login over SSH, a password can be set and additional users can be created.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -1164,14 +1167,14 @@ The following tasks must also be performed before an instance can be accessed vi
 3. Set the private key (e.g. /home/user/keys/privatekey.pem) permission to read and write.::
 
     $ sudo chmod 600 /PrivateKeyPath/PrivateKeyFile
-
-4. Add the private key to SSH-agent.::
-
-    $ sudo ssh-add /PrivateKeyPath/PrivateKeyFile
-
+	
 .. sidebar:: **Note:**
 
    This adds RSA or DSA identities to the authentication agent.
+	
+4. Add the private key to SSH-agent.::
+
+    $ sudo ssh-add /PrivateKeyPath/PrivateKeyFile
 
 5. Connect to the instance via SSH using the keypair. The user is the local user of the instance which is defined in the image (see Chapter 11.1 Prerequisites).::
 
@@ -1187,15 +1190,15 @@ Accessing a Linux Instance via SSH Using a Keypair on Windows
 
 When accessing an instance via a local Windows client, an SSH programme for Windows is required to access an instance via SSH. In the following example, the PuTTY program is used.
 
+.. sidebar:: **Note:**
+
+   All of the programmes mentioned are open source and free. Please visit www.putty.org for more information.
+
 The following programs must to be installed before continuing:
 
 * PuTTY (SSH program)
 * Pageant (SSH authentication agent)
 * Optional: PuTTYgen (Converts .pem keys to the  .ppk format that PuTTY uses)
-
-.. sidebar:: **Note:**
-
-   All of the programmes mentioned above are open source and free. Please visit www.putty.org for more information.
 
 The following tasks must be performed before an instance can be accessed via SSH using a keypair on Windows:
 
@@ -1256,11 +1259,7 @@ Accessing an Instance over the Cloudlynx Dashboard Console
 
 .. sidebar:: **Note:**
 
-   For Cloudlynx provided Linux images, the first login must be done over SSH, using one of the methods described above. This is the only way a password can be set or more users added. 
-
-.. sidebar:: **Note:**
-
-   For the Cloudlynx dashboard console of Cloudlynx provided Linux images, access is only possible with a user and a password, no SSH keypair can be used. Set a password or create a user over a SSH connection first.
+   For Cloudlynx provided Linux images, the first login must be done over SSH, using one of the methods described above. This is the only way a password can be set or more users added. Set a password or create a user to access the consokle via the Cloudlynx Dashboard.
 
 1. Click on the **Instances** sub-menu item under the **Manage Compute** section on the side bar.
 2. Click on the name of the instance in the list of instances available.
@@ -1287,6 +1286,10 @@ How to transfer files to and from an instance depends on the local operating sys
 scp Between a Local Linux and a Linux Instance
 """"""""""""""""""""""""""""""""""""""""""""""
 
+.. sidebar:: **Note:**
+
+   Scp can also be used to copy files from one instance to another within the cloud.
+   
 To transfer files from a local computer to the instance in the cloud proceed as follows:
 
 1. Install OpenSSH (if not already installed).
@@ -1305,10 +1308,6 @@ To transfer a file from an instance in the cloud to your local file system proce
 
 The <destination file> in this case is the file on the local computer.
 
-.. sidebar:: **Note:**
-
-   Scp can also be used to copy files from one instance to another within the cloud.
-
 .. _scp-windows-linux:
 
 scp Between a Local Windows Computer and a Linux Instance
@@ -1325,12 +1324,13 @@ We recommend WinSCP to copy files from a Windows computer to a Linux instance an
 7. Choose SCP as the protocol in the **File protocol** dropdown menu.
 8. In the **Host name** field, enter the floating IP Address of the instance the connection should be established to.
 9. Fill in the user of the instance in the **User name** field.
-10. Click on the **Save** button to save the settings.
-11. Press the **Login** button and the connection to the instance via scp will be established. A window will appear with a graphical user interface allowing the transfer of files between the local computer and the instance.
 
 .. sidebar:: **Note:**
 
    In case the connection fails, please make sure Pageant is running and contains the private .ppk key.
+
+10. Click on the **Save** button to save the settings.
+11. Press the **Login** button and the connection to the instance via scp will be established. A window will appear with a graphical user interface allowing the transfer of files between the local computer and the instance.
 
 File Transfer Using sftp (secure ftp)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1340,16 +1340,16 @@ Sftp can be used to access an instance from a local computer.
 sftp Between a Local Linux Computer and a Linux Instance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+.. sidebar:: **Note:**
+
+   Please see :ref:`key-local-linux` for instructions on how to configure OpenSSH and add the private key to the ssh agent.
+
 1. Make sure that the OpenSSH tools are installed on the local computer and that the private key has been added to the ssh agent. 
 2. Execute the following sftp command in the local terminal window:: 
 
     sftp <username of instance>@<Instance IP>
 
 3. The command prompt of sftp is shown now. Type either help or ? to see all available commands. Please see the documentation of sftp for more details.
-
-.. sidebar:: **Note:**
-
-   Please see chapter 3.1.3 for instructions on how to configure OpenSSH and add the private key to the ssh agent.
 
 sftp Between a Local Windows Computer and a Linux Instance  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1383,6 +1383,12 @@ Create a Volume
 5. **Description** – Optionally, add a description for the volume.
 6. **Type** – Leave the **Type** box blank (currently not supported).
 7. **Size (GB)** – Specify the number of GB for the volume. Check the Volume Limits on the right side for the available amount of GB (**Total Gigabytes** bar).
+
+.. sidebar:: **Note:**
+
+   The **Volume Source** options will not display the snapshot option if there are no existing snapshots in your project.
+   If you choose **No Source, empty volume** it does not contain a file system or a partition table.
+
 8. **Volume Source** – Select the volume source. 
 
   * Selecting **No source, empty volume** creates an empty volume (like an unformatted physical hard drive).
@@ -1394,14 +1400,6 @@ Create a Volume
 
 .. image:: _static/gettingstarted/fig72.png
    :alt: Create Volume
-   
-.. sidebar:: **Note:**
-
-   The **Volume Source** options will not display the snapshot option if there are no existing snapshots in your project.
-
-.. sidebar:: **Note:**
-
-   If you choose **No Source, empty volume** it does not contain a file system or a partition table.
 
 Attach a Volume to an Instance
 ------------------------------
@@ -1411,6 +1409,10 @@ Attach a Volume to an Instance
 Attach a Volume to an Instance in the Cloudlynx Dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   Several volumes can be attached to one instance. In Linux the device name should be in alphabetical order, e.g. the first volume is /dev/vdb, the second is /dev/vdc and so on.
+
 1. Click **Volumes** under **Manage Compute** on the side bar.
 2. Find the volume you want to attach in the table on the right.
 3. Click the **Edit Attachments** button under **Actions** on the right hand side of the table.
@@ -1419,10 +1421,6 @@ Attach a Volume to an Instance in the Cloudlynx Dashboard
 6. Under **Device Name** enter the name of the device.
 7. Click **Attach Volume**.
 8. In the **Volumes** table you can see the instance to which the volume has been attached.
-
-.. sidebar:: **Note:**
-
-   Several volumes can be attached to one instance. In Linux the device name should be in alphabetical order, e.g. the first volume is /dev/vdb, the second is /dev/vdc and so on.
 
 .. image:: _static/gettingstarted/fig73.png
    :alt: Manage Volume Attachments – Attach to Instance
@@ -1452,14 +1450,15 @@ Initialize a Volume Attached in a Linux Instance
 
     $ lsblk
 
+.. sidebar:: **Note:**
+
+   The name of the attached block storage can be changed by the OS of the instance if the device name is already taken.
+	
 3. Find the name of the attached block storage (e.g. /dev/vdc).
 4. Create a file system on the device by giving in the following command (where <device> is the name of the attached block storage, e.g. /dev/vdc)::
 
     $ sudo mkfs.ext4 <device>
 
-.. sidebar:: **Note:**
-
-   The name of the attached block storage can be changed by the OS of the instance if the device name is already taken.
 
 Mount a Volume on a Linux Instance
 """"""""""""""""""""""""""""""""""
@@ -1586,9 +1585,6 @@ Delete a Volume
 .. sidebar:: **Caution:**
 
    Volumes that are attached to an instance cannot be deleted. Thus, make sure you detach any volumes before you attempt to delete them (:ref:`detach-volume`). Check the volume **Status** column to see if the volume is detached (it should say **Available**) or still attached (**In-Use**). 
-
-.. sidebar:: **Note:**
-
    Delete any snapshots associated with the volume before deleting the volume.
 
 1. Click **Volumes** under **Manage Compute**.
@@ -1621,13 +1617,12 @@ Create a Container
 
 .. image:: _static/gettingstarted/fig81.png
    :alt: Containers – Create Container
-   
-4. Fill out the **Container Name** field to give the instance a unique name with which it can be identified. 
 
 .. sidebar:: **Note:**
 
    The names are case sensitive.
-
+   
+4. Fill out the **Container Name** field to give the instance a unique name with which it can be identified. 
 5. Click on the **Create Container** button.
 6. The object store container created will be visible in the **Containers** table list.
 
@@ -1672,6 +1667,10 @@ Retrieve Objects from a Container
 Delete One Object from a Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   This action cannot be undone!
+   
 1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
 2. From the list of **Containers**, select the container from where to delete the file.
 3. Click on the **Delete Object** option from the **More** dropdown menu button to the right of the file to be deleted. The **Confirm Delete Object** pop-up window is displayed.
@@ -1681,25 +1680,21 @@ Delete One Object from a Container
    
 4. Click on the **Delete Object** button to confirm the deletion. 
 
-.. sidebar:: **Note:**
-
-   This action cannot be undone!
-
 .. image:: _static/gettingstarted/fig88.png
    :alt: Confirm Delete Object 
    
 Delete Multiple Object from One Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   This action cannot be undone!
+   
 1. Select the **Containers** sub-menu item under **Object Store** section.
 2. From the list of **Containers**, select the container from where to delete files.
 3. Select the files to be deleted by clicking the check boxes to the left of the file names.
 4. Click the **Delete Objects** button at the top right corner of the **Container** page. The **Confirm Delete Objects** pop-up window is displayed.
 5. Click on the **Delete Objects** button to confirm the deletion. 
-
-.. sidebar:: **Note:**
-
-   This action cannot be undone!
 
 .. image:: _static/gettingstarted/fig89.png
    :alt: Confirm Delete Objects 
@@ -1722,9 +1717,6 @@ Copy Objects
 .. sidebar:: **Note:**
 
    The object name must be unique (case sensitive) in the destination container. If the filename already exists, an error will occur and the copy will fail.
-
-.. sidebar:: **Warning:**
-
    Do not enter a path in this pop-up window. This path must be left blank!
 
 6. Click on the **Copy Object** button to confirm the copy.
@@ -1760,6 +1752,10 @@ A container can only be deleted once the container no longer has any objects att
 Search a Container
 ^^^^^^^^^^^^^^^^^^
 
+.. sidebar:: **Note:**
+
+   The filter filters both the name field and the size field.
+   
 1. Type in the file name or part of it in the **Filter** box above the table listing the contents of the container you want to search and click on the **Filter** button.
 
 .. image:: _static/gettingstarted/fig94.png
@@ -1770,20 +1766,16 @@ Search a Container
 .. image:: _static/gettingstarted/fig95.png
    :alt: Containers – filter results
    
-.. sidebar:: **Note:**
-
-   The filter filters both the name field and the size field.
-
 .. _cli:
 
 Command Line Interface (CLI)
 ----------------------------
 
-The installation process in this document is for Linux distributions using packages. For Mac OS X, Microsoft Windows, or Linux installations using **pip**, please refer to the OpenStack documentation: http://docs.openstack.org/user-guide/content/install_clients.html.
-
 .. sidebar:: **Note:**
 
    The installation of the OpenStack client packages depends on the Linux distribution.
+   
+The installation process in this document is for Linux distributions using packages. For Mac OS X, Microsoft Windows, or Linux installations using **pip**, please refer to the OpenStack documentation: http://docs.openstack.org/user-guide/content/install_clients.html.
 
 Install OpenStack Clients for CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
