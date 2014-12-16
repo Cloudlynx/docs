@@ -1277,6 +1277,8 @@ This chapter deals with how to create, attach and remove volumes, how to make a 
 
 Before you can use a volume, you need to create it (see :ref:`create-volume`) and attach it to the instance. Attaching it to the instance involves two actions: First, attach the volume to the instance in the dashboard (see chapter :ref:`attach-volume-dashboard`) and second, attach the volume to the instance from the instance itself (see chapter :ref:`attach-volume-linux` and :ref:`attach-volume-windows`).
 
+.. _create-volume:
+
 Create a Volume
 ---------------
 
@@ -1369,6 +1371,8 @@ Mount a Volume on a Linux Instance
 2. Mount the volume by executing the following command::
 
     $ sudo mount <device> /media/<volume name>
+	
+.. _attach-volume-windows:
 	
 Attach a Volume in a Windows Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1523,7 +1527,7 @@ Create a Container
    :alt: Containers – successfully created container
    
 Store Objects in a Container
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
 2. From the list of **Containers**, select the container where to upload the file.
@@ -1545,7 +1549,7 @@ Store Objects in a Container
    :alt: Containers – successfully upload an object
    
 Retrieve Objects from a Container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
 2. From the list of **Containers**, select the container from where to retrieve a file.
@@ -1558,7 +1562,7 @@ Retrieve Objects from a Container
 .. _delete-one-object:
    
 Delete One Object from a Container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
 2. From the list of **Containers**, select the container from where to delete the file.
@@ -1575,7 +1579,7 @@ Delete One Object from a Container
    :alt: Confirm Delete Object 
    
 Delete Multiple Object from One Container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select the **Containers** sub-menu item under **Object Store** section.
 2. From the list of **Containers**, select the container from where to delete files.
