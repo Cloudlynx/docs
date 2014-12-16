@@ -17,7 +17,9 @@ The document covers the following topics how to:
 
 Before using the Cloudlynx Billing environment, we recommend reading this document to familiarise yourself with the system. 
 
-**Note:** Account registered using the Cloudlynx Billing application will be used for accessing Cloudlynx Dashboard and the Cloudlynx Billing application. 
+.. sidebar: **Note:**
+
+   Account registered using the Cloudlynx Billing application will be used for accessing Cloudlynx Dashboard and the Cloudlynx Billing application. 
 
 Registration
 ------------
@@ -37,9 +39,15 @@ Create a Cloudlynx Account
   * **User Information** – enter basic User information data (e.g. first, last name, e-mail address).
   * **Customer Information** – enter basic Company information. During the registration process, your Account and Project are created in the Keystone. Your **Customer Name** will be used as a Project name in the Cloud.   
   * **Payment Information** – information related to payment method that will be used for paying the invoices. Available options: ‘PayPal’ or ‘Monthly Invoicing’. 
-  **Note:** ‘**PayPal**’ – billing will be automatically via PayPal. PayPal authorization of the automatic payment of the invoice is needed. From the registration page, you’ll be redirected to the PayPal authorization page. ‘**Monthly Invoicing**’ - billing will be done by sending a monthly invoice in PDF format via e-mail notification. Authorization for monthly invoicing payment method is required. Cloudlynx administrators manually do this process. 
+  
+.. sidebar: **Note:** 
 
-  ‘Promo Code’ is an optional field. The Cloudlynx provides promotional codes.  
+   ‘**PayPal**’ – billing will be automatically via PayPal. PayPal authorization of the automatic payment of the invoice is needed. From the registration page, you’ll be redirected to the PayPal authorization page.
+   
+   ‘**Monthly Invoicing**’ - billing will be done by sending a monthly invoice in PDF format via e-mail notification. Authorization for monthly invoicing payment method is required. Cloudlynx administrators manually do this process. 
+
+‘Promo Code’ is an optional field. The Cloudlynx provides promotional codes.  
+
   * **Terms and Conditions** - Before you processed with registration, please click on the link provided and read the Terms and Conditions. After you have read the Terms and Conditions, if you agree to them, check the box acknowledging that you accept the agreement, and continue with the account registration process. 
 
 3. Click on the Finish button to send the registration data.
@@ -119,7 +127,9 @@ The Billing dashboard is split into 3 sections:
 * The content pane (middle part of the screen)
 * The title bar (top part of the screen).
 
-**Note:** Directions given in this document will use the definitions above. 
+.. sidebar: **Note:**
+
+   Directions given in this document will use the definitions above. 
 
 Side Menu Bar
 ^^^^^^^^^^^^^
@@ -196,7 +206,9 @@ Create a User
 .. image:: _static/accountmanagement/fig4.png
    :alt: Add User
 
-**Note:** For Customer’s Users the following roles are predefined:
+.. sidebar: **Note:** 
+
+   For Customer’s Users the following roles are predefined:
 
 * CustomerAdmin role;
 * CustomerBillingAdmin role (limited access only to the Invoices).
@@ -240,14 +252,14 @@ If you forgot the password for the account, it can be easily reset. To reset a p
 5. Click on the Change Password button. Click on the Cancel button do discard the action.
 6. If the username is valid, you will receive a password change link to the e-mail address associated with the account.
 7. Click on the link provided in the e-mail notification.  
-4. Enter a new password. When creating your password it must meet the following requirements:
+8. Enter a new password. When creating your password it must meet the following requirements:
 
   * It must have at least 11 characters, 
   * It must not be based on a dictionary word,
   * Use combination of letters, capitalization, and other characters (number, special signs, punctuation, etc.) for the best results.
   
-8. Confirm password by retyping the newly entered password.
-9. Click on the Set Password button to finish setting the password.
+9. Confirm password by retyping the newly entered password.
+10. Click on the Set Password button to finish setting the password.
 
 Change Infrastructure Quotas
 ----------------------------
@@ -265,7 +277,9 @@ You as a Customer can request a change in the Cloud usage quotas. Change of the 
 9. The quotas are increased as requested, or remain the same in a case of rejection.  
 10. After approval process, you will get an e-mail notification about your quota change request either the quota request has been approved or rejected.  
 
-**Important:** If a quota increase is requested, approval is needed from the Cloudlynx administrators. E-mail notification is sent containing the request for quota change. Cloudlynx administrator approves/rejects quota request. You will be informed about the quota change via e-mail. If you request a quota decrease, quota decrease is performed automatically without any additional approval from the Cloudlynx administrators side. You will be informed about the quota change via e-mail.
+.. sidebar: **Important:**
+
+   If a quota increase is requested, approval is needed from the Cloudlynx administrators. E-mail notification is sent containing the request for quota change. Cloudlynx administrator approves/rejects quota request. You will be informed about the quota change via e-mail. If you request a quota decrease, quota decrease is performed automatically without any additional approval from the Cloudlynx administrators side. You will be informed about the quota change via e-mail.
 
 View Invoices
 -------------
