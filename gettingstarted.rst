@@ -240,13 +240,10 @@ Import an Existing Keypair
 
 .. sidebar:: **Note:**
 
-   The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one.
+   The private key is never seen by the cloud system and is only ever held by the customer. This option is the most secure one..
+   An error message may occur if the format of the key is not OpenSSH.
 
 A keypair can be generated with an external tool that creates OpenSSH formatted keys (see section :ref:`create-keypair`). Any type of an OpenSSH key is accepted.
-
-.. sidebar:: **Note:**
-
-   An error message may occur if the format of the key is not OpenSSH.
 
 1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
 2. Click on the **Keypairs** tab. 
@@ -269,15 +266,11 @@ Delete a Keypair
 .. sidebar:: **Warning:**
 
    Instances may not be accessible anymore if the public key is deleted. This action cannot be undone.
+   This will delete the public key on the system. The private key is not affected.
 
 1. Select the **Access & Security** tab on the side bar under the **Manage Compute** section.
 2. Click on the **Keypairs** tab. All available keypairs for that project are listed.
 3. Click on the checkbox on the left of the keypair to be deleted.
-
-.. sidebar:: **Note:**
-
-   This will delete the public key on the system. The private key is not affected.
-
 4. Click on the **Delete Keypair** button.
 
 Create and Manage a Network
@@ -534,7 +527,7 @@ Edit a Subnet
   * **DNS Name Servers** – Update the name for the DNS server.
   * **Host Routes** – Update the IP address of host routes.
 
-  6. Click on the **Update** button to save changes.
+6. Click on the **Update** button to save changes.
 
 .. image:: _static/gettingstarted/fig24.png
    :alt: Update Subnet Detail tab
@@ -779,8 +772,8 @@ Cloudlynx provides multiple methods to launch an instance, ranging from the GUI 
 
    To launch an instance the following prerequisites must be fulfilled:
 
-* The person launching the instance must have the correct login details for the account.
-* The network is correctly defined and includes at least one subnet.
+   * The person launching the instance must have the correct login details for the account.
+   * The network is correctly defined and includes at least one subnet.
 
 Instances can be launched from the following screens:
 
@@ -934,14 +927,14 @@ Launching an instance from a volume requires an already existing volume with an 
 
 .. image:: _static/gettingstarted/fig56.png
    :alt: Launch Instance – Details – Volume
-   
-Launch an Instance Using CLI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. sidebar:: **Note:**
 
-   All commands shown are for Linux based operating systems. This chapter will not cover Windows based operating systems
+   All commands shown are for Linux based operating systems. This section will not cover Windows based operating systems
    
+Launch an Instance Using CLI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
 To launch an instance using the CLI, the OpenStack client needs to be installed and configured on the local Linux client (see chapter :ref:`cli`).
 
 Gather Parameters to Launch an Instance
@@ -955,7 +948,7 @@ To be able to create the launch command, several variables should be collected b
 
 Minimum required variables to launch an instance:
 
-1. An instance source (image, snapshot or volume that contains an image or snapshot).:
+1. An instance source (image, snapshot or volume that contains an image or snapshot).::
 
     $ nova image-list
 
@@ -1089,15 +1082,15 @@ Make a Snapshot of an Instance
 
 .. image:: _static/gettingstarted/fig57.png
    :alt: Instances - Create a Snapshot
+
+.. sidebar:: **Note:**
+
+   The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
    
 3. The **Create Snapshot** pop-up window is displayed.
 
 .. image:: _static/gettingstarted/fig58.png
    :alt: Create Snapshot
-
-.. sidebar:: **Note:**
-
-   The resulting snapshot can then be found in the **Images & Snapshots** sub-menu item under the **Manage Compute** section.
 
 4. Specify a name for the snapshot.
 5. Click on the **Create Snapshot** button to create a snapshot.
