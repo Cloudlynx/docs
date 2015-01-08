@@ -384,7 +384,7 @@ Edit a Subnet
 Delete a Subnet
 ^^^^^^^^^^^^^^^
 
-.. note::
+.. warning::
    This action cannot be undone.
    
 1. Select **Network Topology** on the left side bar under the **Manage Network** section. 
@@ -444,7 +444,7 @@ Set a Gateway
 Delete a Router
 ^^^^^^^^^^^^^^^
 
-.. note::
+.. warning::
    This action cannot be undone. 
 
 1. Select the **Routers** tab on the side bar under the **Manage Network** section.
@@ -517,7 +517,7 @@ Edit a Subnet
 Delete a Subnet
 ^^^^^^^^^^^^^^^
 
-.. note::
+.. warning::
    This action cannot be undone.
 
 1. Select **Network Topology** on the side bar under the **Manage Network** section. 
@@ -640,7 +640,7 @@ For example, to enable only SSH and ICMP (Internet Control Message Protocol), pi
 Delete a Rule
 """""""""""""
 
-.. note::
+.. warning::
    This action cannot be undone. 
    
 1. Click on the **Access & Security** sub-menu item under the **Manage Compute** section.
@@ -1614,7 +1614,7 @@ Retrieve Objects from a Container
 Delete One Object from a Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
+.. warning::
    This action cannot be undone!
    
 1. Select the **Containers** sub-menu item under the **Object Store** section on the side bar.
@@ -1632,7 +1632,7 @@ Delete One Object from a Container
 Delete Multiple Object from One Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
+.. warning::
    This action cannot be undone!
    
 1. Select the **Containers** sub-menu item under **Object Store** section.
