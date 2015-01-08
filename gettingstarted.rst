@@ -1819,9 +1819,7 @@ Download and Source the OpenStack RC File
 .. image:: _static/gettingstarted/fig96.png
    :alt: Access and Security – download OpenStack rc file
    
-.. sidebar:: **Note:**
-
-   The filename will be of the form **PROJECT-openrc.sh** where *PROJECT* is the name of the project for which the file was downloaded.
+.. Tip:: The filename will be of the form **PROJECT-openrc.sh** where *PROJECT* is the name of the project for which the file was downloaded.
 
 4. Copy the **PROJECT-openrc.sh** file to the computer from which the OpenStack commands are run.
 5. On any shell from which the OpenStack commands are run, source the **PROJECT-openrc.sh** file for the respective project.::
