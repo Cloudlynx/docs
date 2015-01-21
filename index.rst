@@ -5,11 +5,14 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
 .. toctree::
    :maxdepth: 3
    
+   build
    networksetup
    creatingkeypairs
+   security
+   launch
+   access
    gettingstarted
    accountmanagement
    faq
    knownissues
-   howto
 

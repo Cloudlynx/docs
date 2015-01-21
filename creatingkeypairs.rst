@@ -4,5 +4,10 @@ How to Create a Keypair
 How to Create a Keypair using PuTTY
 -----------------------------------
 
-testing
-=======
+
+How to Create a Keypair using the Dashboard
+-------------------------------------------
+
+
+How to Create a Keypair using Linux
+-----------------------------------
