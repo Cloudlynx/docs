@@ -5,7 +5,7 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
 .. toctree::
    :maxdepth: 3
    
-   setupnetwork
+   networksetup
    creatingkeypairs
    gettingstarted
    accountmanagement
