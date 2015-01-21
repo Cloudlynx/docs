@@ -9,7 +9,5 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
    accountmanagement
    faq
    knownissues
-   
    HowTo
-   
 
