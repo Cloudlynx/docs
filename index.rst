@@ -10,4 +10,6 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
    faq
    knownissues
    
+   HowTo
+   
 
