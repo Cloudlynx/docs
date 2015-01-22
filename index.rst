@@ -11,6 +11,8 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
    security
    launch
    access
+   storage
+   trasnfer
    gettingstarted
    accountmanagement
    faq
