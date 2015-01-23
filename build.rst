@@ -38,5 +38,3 @@ Here is the order you should follow and the specific mandatory elements:
 Once that has been done you can launch your instance and access it using SSH.
 
 There are several vital elements to each stage, for example, adding subnets and routers.   So please read the documtation carefully when creating your instances. 
-
-

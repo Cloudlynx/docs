@@ -16,6 +16,7 @@ To log in to the Cloudlynx dashboard, use the link provided in the welcome email
 
 .. note::
       In the case of a forgotten password, please go to the account management site https://preview.cloudlynx.ch/account.
+
 Overview of the Cloudlynx Dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -102,4 +103,3 @@ A password change should not be done via the **Settings** link in the title bar.
       :alt: Change Password
 
 .. _key-management:
-
