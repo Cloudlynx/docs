@@ -6,10 +6,10 @@ Launch an Instance
 * Log-in to the Cloudlynx Dashboard
 * Configure the network the Instance will be attached to
 * Find out which is the boot media you are going to use
-o Pre-defined image from Cloudlynx
-o Upload your own image
-o Start an Instance from an already existing snapshot
-o Start an Instance from an already existing volume
+	* Pre-defined image from Cloudlynx
+	* Upload your own image
+	* Start an Instance from an already existing snapshot
+	* Start an Instance from an already existing volume
 * Find out the requirements for the Instance (RAM, CPU, Boot Disk size)
 
 
@@ -38,11 +38,11 @@ Launch an Instance from the Dashboard
       :alt: Launch Instance Instance Boot Source
 
 **The Instance Boot Sources are**:
-* **Boot from image** – A new field for **Image Name** displays. Select an image from the list.
-* **Boot from snapshot** – A new field for **Instance Snapshot** displays. Select a snapshot from the list.
-* **Boot from volume** – A new field for **Volume** displays. Select a volume from the list.
-* **Boot from image (creates a new volume)** – Boot from an image and create a volume by entering the device size and device name for your volume. Select the **Delete on Terminate** option to delete the volume on terminating the instance.
-* **Boot from volume snapshot (creates a new volume)** - boot from a volume snapshot and create a new volume by choosing **Volume Snapshot** from the list and adding a **Device Name** for your volume. Click the **Delete on Terminate** option to delete the volume on terminating the instance.
+- **Boot from image** – A new field for **Image Name** displays. Select an image from the list.
+- **Boot from snapshot** – A new field for **Instance Snapshot** displays. Select a snapshot from the list.
+- **Boot from volume** – A new field for **Volume** displays. Select a volume from the list.
+- **Boot from image (creates a new volume)** – Boot from an image and create a volume by entering the device size and device name for your volume. Select the **Delete on Terminate** option to delete the volume on terminating the instance.
+- **Boot from volume snapshot (creates a new volume)** - boot from a volume snapshot and create a new volume by choosing **Volume Snapshot** from the list and adding a **Device Name** for your volume. Click the **Delete on Terminate** option to delete the volume on terminating the instance.
 
 8. Click on the **Access & Security** tab.
 9. Select your **keypair** from the dropdown list.
