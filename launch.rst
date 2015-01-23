@@ -1,2 +1,2 @@
-How to Launch an Instance
-=========================
+Launch an Instance
+==================

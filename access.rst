@@ -1,3 +1,3 @@
-How to Access an Instance
-=========================
+Access an Instance
+==================
 

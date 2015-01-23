@@ -12,7 +12,7 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
    launch
    access
    storage
-   trasnfer
+   transfer
    gettingstarted
    accountmanagement
    faq

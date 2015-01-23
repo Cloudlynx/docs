@@ -1,5 +1,5 @@
-How to Create a Keypair
-=======================
+Keypairs
+========
 
 How to Create a Keypair using PuTTY
 -----------------------------------
