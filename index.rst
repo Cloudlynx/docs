@@ -13,7 +13,6 @@ Documentation for Cloudlynx: a highly compliant Swiss cloud provider – offerin
    access
    storage
    transfer
-   gettingstarted
    accountmanagement
    faq
    knownissues

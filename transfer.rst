@@ -1,2 +1,2 @@
-Transfering Files to an Instance
-================================
+Transfering Files
+=================
