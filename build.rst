@@ -23,7 +23,7 @@ Additional training courses and course material are available on the Cloudlynx w
 Instance Building - the Essentials
 ----------------------------------
 
-How to ensure that your new instances work correctly, withoutt error, the first time?   
+How to ensure that your new instances work correctly, without error, the first time?   
 
    1.  The order in which you build your instance is very important. 
    2.  You must ensure that all the necessary elements are configured.
@@ -37,4 +37,4 @@ Here is the order you should follow and the specific mandatory elements:
 
 Once that has been done you can launch your instance and access it using SSH.
 
-There are several vital elements to each stage, for example, adding subnets and routers.   So please read the documtation carefully when creating your instances. 
+There are several vital elements to each stage, for example, adding subnets and routers. So please read the documentation carefully when creating your instances. 

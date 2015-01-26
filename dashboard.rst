@@ -12,7 +12,7 @@ To log in to the Cloudlynx dashboard, use the link provided in the welcome email
       :alt: Log In window
 
 .. note::
-      The registration process is not covered in this document. For more information, please visit https://preview.cloudlynx.ch/account/register.
+      The registration process is covered here: https://preview.cloudlynx.ch/account/register.
 
 .. note::
       In the case of a forgotten password, please go to the account management site https://preview.cloudlynx.ch/account.
