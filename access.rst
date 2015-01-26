@@ -6,6 +6,7 @@ Accessing an Instance
 There are several ways to access an instance. This largely depends on the operating system of the instance and also on the client operating system accessing the instance.
 
 **Prerequisites**
+
 **The following prerequisites must be fulfilled before accessing an instance over SSH**:
 
 * The following network related tasks must be completed 
@@ -88,7 +89,7 @@ Accessing a Linux Instance via SSH Using a Keypair on Linux
 When accessing an instance from a local Linux client via SSH, the private key file (.pem) must be stored in the Linux client and have the file permissions configured correctly to enable an SSH connection to the instance.   These permissions are configured when you create the key using ssh-keygen. If you use any other method for creating the key (Dashboard, PuTTY, etc) then you will need to ensure they are correctly copied to the Linux client and that they have the correct permissions.
 
 
-1) Open a Terminal.
+1) Open a **Terminal**.
 
 2) Connect to the instance via SSH using the keypair. The user is the local user of the instance which is defined in the image.
 
