@@ -74,7 +74,7 @@ We recommend WinSCP to copy files from a Windows computer to a Linux instance an
 
 
 Manage Files in the Object Storage
-==================================
+----------------------------------
 
 This section is for Windows only! For Linux we recommend to use the CLI Clients (SWIFT).
 
