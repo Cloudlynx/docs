@@ -38,12 +38,12 @@ Create a Network and a Subnet
 	A subnet can also optionally have a gateway, a list of DNS name servers, and host routes. This information is pushed to instances whose interfaces are associated with the subnet. 
 	
 Router Setup
-============
+------------
 
 A router is needed to establish a connection between subnets or to connect a subnet to the public network so that the instances can be reached over the internet.
 
 Create a Router
----------------
+"""""""""""""""
 
 1.	Select the **Routers** tab on the side bar under the **Manage Network** section.
 2.	Click on the **Create Router** button. 
@@ -54,7 +54,7 @@ Create a Router
       :alt: Create Router
 	  
 Set a Gateway
--------------
+"""""""""""""
 
 1.	Select the **Routers** tab on the side bar under the **Manage Network** section.
 2.	Click on the **Set Gateway** button for the router you want to set a gateway for.
@@ -65,7 +65,7 @@ Set a Gateway
       :alt: Set Gateway
 	  
 Connect a Private Network to a Router
--------------------------------------
+"""""""""""""""""""""""""""""""""""""
 
 1.	Select the **Routers** tab on the side bar under the **Manage Network** section. 
 2.	Click on the name of the router.
@@ -81,7 +81,7 @@ Connect a Private Network to a Router
       :alt: Add Interface
 	  
 Network Topology
-================
+----------------
 
 The **Network Topology** page represents a graphical overview of the created networks.
 The following buttons are available at the top of the **Network Topology** page:
@@ -106,7 +106,7 @@ By clicking on the network name the **Network Detail** page will be opened, show
       :alt: Network Topology
 	  
 View Network Detail
--------------------
+"""""""""""""""""""
 
 1. Select **Network Topology** on the side bar under the **Manage Network** section. 
 2. Click on the name of the network you want to know more about.
