@@ -10,8 +10,8 @@ SSH keypairs are used to access instances securely without specifying a password
 There are three possibilities how to create keypairs. It can be done either directly on the Cloudlynx dashboard by using a third party tool such as the open source tool PuTTYgen on a Windows client, or by using the CLI SSH commands of a Linux client.
 
 
-How to Create a Keypair using PuTTY
------------------------------------
+How to Create a Keypair using PuTTYGen
+--------------------------------------
 
 1.  Open the **PuttyGen** software and click on **Generate**, you will then be prompted to, “Please generate some randomness by moving the mouse over the blank area.”   At this point just keep moving the mouse until you get the message, “Please wait while a key is generated”.
 
@@ -41,7 +41,7 @@ Importing the Keypair
                :alt: Access and Security
 
 
-6.  In the **Public Key** field paste all of the characters that were created by the PuttyGen utility and click on **Import Keypair** (everything you see under point 2. In the large filed called “Public key for pasting into OpenSSH authorized_keys file”)
+6.  In the **Public Key** field paste all of the characters that were created by the PuttyGen utility and click on **Import Keypair**.
 
 
 .. image:: _static/keypairs/fig5_puttygen.png
@@ -58,14 +58,14 @@ How to Create a Keypair on the Dashboard
 ----------------------------------------
 
 .. note::
-      The private key has been generated in the browser and there is no copy of the private key in the cloud nor is there a recovery option. The only existing copy is the one you have saved (the .pem file). Treat it like any other private key you may have and make sure not to lose it.
+      The private key is generated in the browser and there is no copy of the private key in the cloud nor is there a recovery option. The only existing copy is the one you have saved (the .pem file). Treat it like any other private key you may have and make sure not to lose it.
 
 1. Select the **Access & Security** tab under the Manage Compute section in the sidebar.
 2. Click on the **Keypairs** tab. All available keypairs for that project are listed. The list is empty by default until somebody creates or imports a keypair.
 3. Click on the **Create Keypair** button.
-4. Specify a name for the key. For example “Mills_Evan_Keypair”
+4. Specify a name for the key, for example “Mills_Evan_Keypair”.
 5. Click on the **Create Keypair** button in the dialogue window.
-6. The private key is available for download (the web browser may prompt you with download options). Cloudlynx will only store the public key in the project.
+6. The private key is available for download (the web browser may prompt you with download options).  Cloudlynx will only store the public key.
 7. The keypair now appears on the list of available keypairs under **Access & Security > Keypairs**.
 
 .. image:: _static/gettingstarted/fig6.png
@@ -75,14 +75,14 @@ How to Create a Keypair on the Dashboard
 How to Create a Keypair using Linux
 -----------------------------------
 
-1.  Open a terminal and enter the following command and follow the instructions
+1.  Open a terminal and enter the following command and follow the instructions:
 
         $ ssh-keygen –b 4096 –t rsa –C training
 
 .. image:: _static/keypairs/fig1_linux.png
    :alt: Generating Keypair
 
-2.  Add the SSH key to the ssh-agent using the ssh-add command
+2.  Add the SSH key to the ssh-agent using the ssh-add command:
 
         $ ssh-add linux_keypair
 
@@ -107,6 +107,7 @@ How to Create a Keypair using Linux
    :alt: Copy Public Key
 
 
+
 Importing the Keypair
 """""""""""""""""""""
 
@@ -115,7 +116,7 @@ Importing the Keypair
 .. image:: _static/keypairs/fig5_linux.png
    :alt: Dashboard
 
-8.  Paste them into dashboard and click on Import Key
+8.  Paste them into dashboard and click on **Import Key**
 
 .. image:: _static/keypairs/fig6_linux.png
    :alt: Import Keypair
