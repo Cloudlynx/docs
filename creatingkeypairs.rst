@@ -68,7 +68,7 @@ How to Create a Keypair on the Dashboard
 6. The private key is available for download (the web browser may prompt you with download options).  Cloudlynx will only store the public key.
 7. The keypair now appears on the list of available keypairs under **Access & Security > Keypairs**.
 
-.. image:: _static/gettingstarted/fig6.png
+.. image:: _static/keypairs/fig6.png
       :alt: Create Keypair
 
 

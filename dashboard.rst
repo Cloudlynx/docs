@@ -8,7 +8,7 @@ Log in to the Cloudlynx Dashboard
 
 To log in to the Cloudlynx dashboard, use the link provided in the welcome email or use the login link on the Cloudlynx webpage. The login credentials are provided during the registration process.
 
-.. image:: _static/gettingstarted/fig1.png
+.. image:: _static/dashboard/fig1.png
       :alt: Log In window
 
 .. note::
@@ -29,7 +29,7 @@ The Cloudlynx dashboard is split into 3 sections:
 * The content pane (middle part of the screen)
 * The title bar (top part of the screen)
 
-.. image:: _static/gettingstarted/fig2.png
+.. image:: _static/dashboard/fig2.png
       :alt: Dashboard Overview
 
 
@@ -75,12 +75,12 @@ On the **Overview** page you are able to query current and past cloud usage, as 
 .. note::
       The Date format needs to be YYYY-MM-DD.
 
-.. image:: _static/gettingstarted/fig3.png
+.. image:: _static/dashboard/fig3.png
       :alt: Select a period of time to query its usage
 
 A usage summary report can be exported into CSV format. Click on the **Download CSV Summary** button to generate the file.
 
-.. image:: _static/gettingstarted/fig4.png
+.. image:: _static/dashboard/fig4.png
       :alt: Download CSV Summary
 
 The Title Bar
@@ -97,7 +97,7 @@ Change Password
 """""""""""""""
 A password change should not be done via the **Settings** link in the title bar. Instead please go to the account management site https://preview.cloudlynx.ch/account. Log in with your credentials, click on the user icon in the upper right hand corner and select **Change Password**.
 
-.. image:: _static/gettingstarted/fig5.png
+.. image:: _static/dashboard/fig5.png
       :alt: Change Password
 
 .. _key-management:
