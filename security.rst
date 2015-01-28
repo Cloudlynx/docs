@@ -31,6 +31,7 @@ Security Group Rules
 Modify the rules in a security group to allow access to instances through different ports and protocols. 
 
 **The following parameters for rules must be specified**:
+
 - **Destination Port On Instances** – Define a port range. To open a single port, enter the same value twice. The Internet Control Message Protocol (ICMP) does not support ports; enter values to define the codes and types of ICMP traffic to be allowed instead. 
 - **Source of Traffic** – The source can be defined either as an IP address, an IP address range, or as another security group in the cloud.
 
@@ -105,6 +106,7 @@ Each launched instance has a private IP address and can also have a public (floa
       :alt: Manage Floating IP Associations – select a floating IP
 	  
 10. The floating IP chosen is automatically filled into the **IP Address** field. 
+
 - A new IP address can be added by clicking the **+** button. This option will add a new Floating IP to your floating IP pool.
 - Another IP address can be selected also by opening the dropdown menu and selecting an alternative IP address from the pool of available IP addresses to your project.
 

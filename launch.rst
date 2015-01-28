@@ -28,7 +28,7 @@ Launch an Instance from the Dashboard
 .. image:: _static/launchaninstance/fig2.png
       :alt: Launch Instance Details
 
-3. Select an availability zone (choose LUPIN) for the instance from the dropdown list. This defines where the instance will be physically located.
+3. Select an availability zone for the instance from the dropdown list. This defines where the instance will be physically located.
 4. Fill out the **Instance Name** field to give the instance a unique name for easy identification.
 5. Select a flavour for the instance. Flavours are predefined and determine the compute resources available. For the selected flavour, the resources are displayed in the **Flavour Details** section on the right.
 6. To launch multiple instances, enter a value greater than one in the **Instance Count** field.
@@ -50,8 +50,8 @@ Launch an Instance from the Dashboard
 *  **Boot from volume snapshot (creates a new volume)** - boot from a volume snapshot and create a new volume by choosing **Volume Snapshot** from the list and adding a **Device Name** for your volume. Click the **Delete on Terminate** option to delete the volume on terminating the instance.
 
 8. Click on the **Access & Security** tab.
-9. Select your **keypair** from the dropdown list.
-10. Select the your **security group**.
+9. Select your **Keypair** from the dropdown list.
+10. Select the your **Security Group**.
 
 .. image:: _static/launchaninstance/fig4.png
       :alt: Launch Instance Access & Security

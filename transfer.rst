@@ -44,7 +44,7 @@ The <destination file> in this case is the file on the local computer.
 scp Between a Local Windows Computer and a Linux Instance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 
-We recommend WinSCP to copy files from a Windows computer to a Linux instance and vice versa. You can run pageant on your local Windows computer and add the private key for easier management when also using PuTTY for SSH connection.
+WinSCP can be used to copy files from a Windows computer to a Linux instance and vice versa. You can run pageant on your local Windows computer and add the private key for easier management when also using PuTTY for SSH connection.
 
 1) Start WinSCP and click the **New Site** button.
 
@@ -76,7 +76,7 @@ We recommend WinSCP to copy files from a Windows computer to a Linux instance an
 Manage Files in the Object Storage
 ----------------------------------
 
-This section is for Windows only! For Linux we recommend to use the CLI Clients (SWIFT).
+This section is for Windows only! For Linux we recommend to use the CLI Client (SWIFT).
 
 It is possible to manage Object Storage using a SWIFT/S3 browser. We are using Cyberduck in our example. Others may work as well.
 

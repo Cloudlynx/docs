@@ -10,7 +10,7 @@ Create a Network and a Subnet
 .. image:: _static/networksetup/pic1.png
       :alt: Networks
 
-3. The dialogue window which appears consists of the tabs **Network**, **Subnet* ** and **Subnet Detail**.
+3. The dialogue window which appears consists of the tabs **Network**, **Subnet*** and **Subnet Detail**.
 
 .. image:: _static/networksetup/pic2.png
       :alt: Create Network – Network tab
@@ -29,7 +29,7 @@ Create a Network and a Subnet
 15. The network now appears in the list of networks under **Manage Network -> Networks**.
 
 .. note::
-	A subnet must be specified to be able to launch an instance.
+	A subnet **must** be specified to be able to launch an instance.
 
 .. note::
 	A subnet represents an IP address block that can be used to assign IP addresses to virtual instances. Each subnet must have a Classless Inter-Domain Routing (CIDR) address and must be associated to a network. IP addresses can be either selected from the whole subnet CIDR or from allocation pools that can be specified by the user.
