@@ -51,7 +51,7 @@ Accessing a Linux Instance using Pageant
                   :alt: PuTTY configuration 
 
 				  
-7) When prompted for a username – user the one you found in the Image Detail pane earlier in this exercise.    Hit Return.   You are now logged into your Linux instance.
+7) When prompted for a username – user the one you found in the Image Detail pane earlier.    Hit Return.   You are now logged into your Linux instance.
 
 .. image:: _static/access/fig4.png
                   :alt: Login 
