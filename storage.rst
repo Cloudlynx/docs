@@ -104,7 +104,9 @@ Initialize a Volume Attached in a Linux Instance
 
 3. Find the name of the attached block storage (e.g. /dev/vdc).
 
-4. Create a file system on the device by giving in the following command (where <device> is the name of the attached block storage, e.g. /dev/vdc):
+4. Create a partition on the block storage device
+
+5. Create a file system on the device by giving in the following command (where <device> is the name of the attached block storage, e.g. /dev/vdc):
 
 	$ sudo mkfs.ext4 <device>
 
@@ -115,7 +117,7 @@ Initialize a Volume Attached in a Linux Instance
 Mount a Volume on a Linux Instance 
 """"""""""""""""""""""""""""""""""
 
-1. Create a directory under /media where the volume should be mounted by executing the following command:
+1. Create a directory under where the volume should be mounted by executing the following command, e.g.:
 
 	$ sudo mkdir –p /media/<volume name>
 
